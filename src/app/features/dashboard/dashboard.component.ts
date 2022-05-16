@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 import { AuthService } from 'src/app/core/services/auth.service';
-import {Firestore, getDocs, query, where,collection} from "@angular/fire/firestore";
+import { DataService } from 'src/app/core/services/data.service';
+import {Firestore} from "@angular/fire/firestore";
 import {Router} from '@angular/router'
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,8 @@ export class DashboardComponent implements OnInit {
     private dial : MatDialog,
     private db : Firestore,
     private router: Router,
-    public authService : AuthService
+    public authService : AuthService,
+    private data : DataService
     ) {
 
       this.authService.checkLogIn()
@@ -27,11 +29,6 @@ export class DashboardComponent implements OnInit {
       this.authService.getInfo()
     }
     
-   
-
-
-
-
   ngOnInit(): void {
   }
 
@@ -48,6 +45,20 @@ export class DashboardComponent implements OnInit {
   closeDialog(){
     this.dial.closeAll();
   }
+
+  
+  
+
+  async getRestaurantsList(){
+    let restaurantsSnap = await this.data.getRestaurants()
+    let restaurantsDatas =[]
+    for (let i  = 0; i<restaurantsSnap.docs.length;i++){
+        restaurantsDatas.push(restaurantsSnap.docs[i].data())
+    }
+    return restaurantsDatas
+  }
+
+ public restaurantsDatas = this.getRestaurantsList()
 
 
 }

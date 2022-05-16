@@ -5,7 +5,12 @@
 <button (click)='openDialog()'>
     Nouveau restaurant
 </button>
-** pseudo: {{this.authService.pseudo}} **
-** mail: {{this.authService.email}} **
-** uid : {{this.authService.uid}} **
-** lastname : {{this.authService.lastName}}
+
+
+<div >
+    <ul>
+        <li *ngFor = "let rest in restaurantsDatas ">{{rest['name']}}</li>
+    </ul>
+   
+
+</div>
