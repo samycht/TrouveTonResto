@@ -1,0 +1,69 @@
+
+
+
+<form class="form" [formGroup]="form" *ngIf ="submit ==false" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="form-control" floatLabel="auto" color="primary" id="1">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" required />
+      <mat-error *ngIf="name?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control" id="2">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" type="text" required />
+      <mat-error *ngIf="description?.hasError('required')">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-control" id="3">
+        <mat-label>Adresse</mat-label>
+        <input matInput formControlName="address" type="text" required />
+        <mat-error *ngIf="address?.hasError('required')">
+          Adress is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control" id="4">
+        <mat-label>Ville</mat-label>
+        <input matInput formControlName="city" type="text" required />
+        <mat-error *ngIf="city?.hasError('required')">
+          City is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control" id="5">
+        <mat-label>Departement</mat-label>
+        <input matInput formControlName="state" type="text" required />
+        <mat-error *ngIf="state?.hasError('required')">
+          State is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control" id="6">
+        <mat-label>Code Postal</mat-label>
+        <input matInput formControlName="zip" type="text" required />
+        <mat-error *ngIf="zip?.hasError('required')">
+          Zip is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-control" id="7">
+        <mat-label>Téléphone</mat-label>
+        <input matInput formControlName="phone" type="tel" required />
+        <mat-error *ngIf="phone?.hasError('required')">
+          Phone is required
+        </mat-error>
+      </mat-form-field>
+
+    <div class="form-footer">
+      <button [disabled]="form.invalid" mat-raised-button type="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+<div *ngIf="submit==true">
+  <h1>Votre annonce a été publiée</h1>
+</div>

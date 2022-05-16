@@ -1,0 +1,20 @@
+
+<div class="background">
+    <div class="login-container">
+      <div class="text-container">
+        <h1>Bienvenue ! </h1>
+        <p>
+          Découvrez les meilleurs restaurant du coin sur ce site.
+        </p>
+       
+      </div>
+      <div class="form-container">
+        <h1>Connectez vous !</h1>
+        <h5>Connexion par e-mail</h5>
+        <app-login-form (formData)="login($event)"></app-login-form>
+        <span>Pas encore de compte?</span>
+        <a routerLink="/register">Inscrivez vous !</a>
+      </div>
+
+    </div>
+  </div>
