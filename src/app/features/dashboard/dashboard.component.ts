@@ -12,7 +12,7 @@ import {Router} from '@angular/router'
 })
 export class DashboardComponent implements OnInit {
 
- 
+
 
 
   constructor(
@@ -21,19 +21,19 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     public authService : AuthService,
     private data : DataService
-    ) {
+  ) {
 
-      this.authService.checkLogIn()
-      this.authService.uid = this.authService.getAuth.currentUser?.uid!
-      this.authService.email = this.authService.getAuth.currentUser?.email!
-      this.authService.getInfo()
-    }
-    
+    this.authService.checkLogIn()
+    this.authService.uid = this.authService.getAuth.currentUser?.uid!
+    this.authService.email = this.authService.getAuth.currentUser?.email!
+    this.authService.getInfo()
+  }
+
   ngOnInit(): void {
   }
 
 
-  
+
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
@@ -46,19 +46,19 @@ export class DashboardComponent implements OnInit {
     this.dial.closeAll();
   }
 
-  
-  
+
+
 
   async getRestaurantsList(){
     let restaurantsSnap = await this.data.getRestaurants()
     let restaurantsDatas =[]
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
-        restaurantsDatas.push(restaurantsSnap.docs[i].data())
+      restaurantsDatas.push(restaurantsSnap.docs[i].data())
     }
     return restaurantsDatas
   }
 
- public restaurantsDatas = this.getRestaurantsList()
+  public restaurantsDatas = this.getRestaurantsList()
 
 
 }
