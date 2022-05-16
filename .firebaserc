@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "we4b-d4903": {
+      "hosting": {
+        "Login": [
+          "we4b-d4903"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "we4b-d4903"
+  }
+}
