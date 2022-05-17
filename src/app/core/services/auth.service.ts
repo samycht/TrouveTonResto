@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut } from '@angular/fire/auth';
 import {RegisterData} from '../interfaces/register-data.interfaces';
 import {LoginData} from '../interfaces/login-data.interfaces';
-import {Firestore,collection,setDoc,doc, query,where, getDocs} from '@angular/fire/firestore';
+import {Firestore, collection, setDoc, doc, query, where, getDocs, getDoc} from '@angular/fire/firestore';
 import {getAuth } from "@angular/fire/auth";
 import {Router} from '@angular/router'
 import { documentId } from 'firebase/firestore';
@@ -21,13 +21,13 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth,email,password);
   }
 
-  
+
   async register({email,password,firstName,lastName,pseudo,accountType}:RegisterData){
     return await createUserWithEmailAndPassword(this.auth,email,password).then((data)=>
-      
+
 
       setDoc(doc(this.db,"users",data.user.uid),{
-        
+
         email:email,
         password:password,
         firstName:firstName,
@@ -46,6 +46,7 @@ export class AuthService {
 
   uid!:string;
   accountType!:number;
+  accountTypeString!:string;
   email!:string;
   firstName!:string;
   lastName!:string;
@@ -61,24 +62,27 @@ export class AuthService {
 
 
   async getInfo() {
+    const docRef = doc(this.db, "users", this.uid);
+    const docSnap = await getDoc(docRef);
 
-    const usersRef = collection(this.db, "users");
-    const q = query(usersRef, where(documentId(), "==", this.uid));
-    const querySnapshot = await getDocs(q);
-    const user = querySnapshot.docs[0].data();
-    
-    
-    this.accountType = user['accountType'];
-    this.email = user['email'];
-    this.firstName = user['firstName'];
-    this.lastName = user['lastName'];
-    this.password = user['password'];
-    this.pseudo = user['pseudo'];
+    const user = docSnap.data();
 
+    if (user) {
+      this.accountType = user['accountType'];
+      this.email = user['email'];
+      this.firstName = user['firstName'];
+      this.lastName = user['lastName'];
+      this.password = user['password'];
+      this.pseudo = user['pseudo'];
+      this.accountTypeString = this.accountNbToString(this.accountType);
+    }
   }
 
-  
 
+  accountNbToString(nb: number):string {
+    let typeOfAccount = ["admin", "Utilisateur", "Restaurateur"];
+    return typeOfAccount[nb];
+  }
 
 
 }

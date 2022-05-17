@@ -12,9 +12,6 @@ import {Router} from '@angular/router'
 })
 export class DashboardComponent implements OnInit {
 
-
-
-
   constructor(
     private dial : MatDialog,
     private db : Firestore,
@@ -32,8 +29,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   openDialog() {
     const dialogConfig = new MatDialogConfig();
 
@@ -46,9 +41,6 @@ export class DashboardComponent implements OnInit {
     this.dial.closeAll();
   }
 
-
-
-
   async getRestaurantsList(){
     let restaurantsSnap = await this.data.getRestaurants()
     let restaurantsDatas =[]
@@ -59,6 +51,4 @@ export class DashboardComponent implements OnInit {
   }
 
   public restaurantsDatas = this.getRestaurantsList()
-
-
 }
