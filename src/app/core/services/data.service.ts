@@ -10,15 +10,16 @@ export class DataService {
     private db: Firestore,
     private authService: AuthService
 
-  ) { }
-
-  async getRestaurants(){
+  ) { 
     
+  }
+
+  async getRestaurants(uid:string){
+
     const userRests = collection(this.db, "restaurants");
-    const q = query(userRests, where("uid", "==", this.authService.uid));
+    const q = query(userRests, where("uid", "==",uid));
     const querySnapshot = await getDocs(q);
     return querySnapshot
-    
   }
 
 }

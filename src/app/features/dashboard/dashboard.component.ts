@@ -16,17 +16,17 @@ export class DashboardComponent implements OnInit {
     private dial : MatDialog,
     private db : Firestore,
     private router: Router,
-    public authService : AuthService,
-    private data : DataService
+    private authService : AuthService,
+    private data : DataService,
+    
+
   ) {
-
+   
     this.authService.checkLogIn()
-    this.authService.uid = this.authService.getAuth.currentUser?.uid!
-    this.authService.email = this.authService.getAuth.currentUser?.email!
-    this.authService.getInfo()
   }
+ 
+ngOnInit(): void {
 
-  ngOnInit(): void {
   }
 
   openDialog() {
@@ -41,14 +41,25 @@ export class DashboardComponent implements OnInit {
     this.dial.closeAll();
   }
 
-  async getRestaurantsList(){
-    let restaurantsSnap = await this.data.getRestaurants()
+
+
+  async getRestaurantsList() {
+
+    this.authService.getInfo()
+    this.authService.uid = this.authService.getAuth.currentUser?.uid!
+    this.authService.email = this.authService.getAuth.currentUser?.email!
+
+
+    let restaurantsSnap = await this.data.getRestaurants(this.authService.uid)
     let restaurantsDatas =[]
+
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
       restaurantsDatas.push(restaurantsSnap.docs[i].data())
     }
+
     return restaurantsDatas
   }
 
-  public restaurantsDatas = this.getRestaurantsList()
+  public restaurants = this.getRestaurantsList()
+ 
 }

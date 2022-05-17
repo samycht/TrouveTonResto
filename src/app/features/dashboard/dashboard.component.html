@@ -6,11 +6,8 @@
   Nouveau restaurant
 </button>
 
-
-<div >
-  <ul>
-    <li *ngFor = "let rest in restaurantsDatas ">{{rest['name']}}</li>
-  </ul>
-
-
+<div *ngFor ="let res of restaurants | async">
+  <h1>
+    {{res["name"]}}
+  </h1>
 </div>
