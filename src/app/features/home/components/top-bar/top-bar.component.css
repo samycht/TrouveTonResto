@@ -7,7 +7,7 @@
     width: 100%;
     height: 100px;
     background-color: #adbeff;
- 
+
 }
 strong{
     color: #091540;
@@ -37,8 +37,8 @@ strong{
 #logo {
     display: flex;
     flex-direction: column;
-   
-    
+
+
 
 }
 #logo a{
@@ -65,7 +65,7 @@ strong{
     margin-right: 5%;
 }
 
-.right a{
+.right a,#searchButton{
     color: #091540;
     font-size: 15px;
     font-weight: bold;
@@ -78,7 +78,7 @@ strong{
     background: white;
 }
 
-.right button{
+.right button {
     font-family: 'Nunito';
     font-size: 15px;
     background-color: #091540;
@@ -87,11 +87,11 @@ strong{
     border-radius: 15px;
     font-weight: bold;
 }
-.right a:hover{
+.right a:hover,#searchButton:hover{
     background-color: #091540;
     color: white;
     border-color: white;
-   
+
 }
 
 .right button:hover{

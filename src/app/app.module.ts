@@ -10,6 +10,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountComponent } from './features/account/account.component';
 import {HomeModule} from "./features/home/home.module";
+import { SearchComponent } from './features/search/search.component';
 
 
 
@@ -18,7 +19,8 @@ import {HomeModule} from "./features/home/home.module";
 @NgModule({
   declarations: [
     AppComponent,
-    AccountComponent
+    AccountComponent,
+    SearchComponent
 
   ],
     imports: [
