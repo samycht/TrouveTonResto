@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Firestore,addDoc,collection} from '@angular/fire/firestore';
+import {Firestore,addDoc,collection,doc,deleteDoc} from '@angular/fire/firestore';
 import { RestaurantData } from '../interfaces/restaurant-data.inerfaces';
 import { AuthService } from './auth.service';
+
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 @Injectable({
   providedIn: 'root'
 })
@@ -27,4 +29,13 @@ export class StorageService {
     );
     
   }
+
+  async delRestaurant(id:string){
+    await deleteDoc(doc(this.db, "restaurants", id));
+  }
+
+
+
+
+
 }

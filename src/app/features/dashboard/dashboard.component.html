@@ -6,8 +6,27 @@
   Nouveau restaurant
 </button>
 
-<div *ngFor ="let res of restaurants | async">
-  <h1>
-    {{res["name"]}}
-  </h1>
+<div class="container">
+  <mat-card id ="card" *ngFor ="let res of restaurants | async">
+    <mat-card-title>
+      {{res.data()["name"]}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
+    </mat-card-subtitle>
+    <mat-card-content>
+      {{res.data()["description"]}}
+    </mat-card-content>
+ 
+    <mat-card-actions>
+      <span>
+        {{res.data()["phone"]}}
+      </span>
+      <button (click)="delete(res.id)">
+        DELETE
+      </button>
+      
+    </mat-card-actions>
+</mat-card>
 </div>
+

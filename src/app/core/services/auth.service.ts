@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut , setPersistence,browserSessionPersistence} from '@angular/fire/auth';
 import {RegisterData} from '../interfaces/register-data.interfaces';
 import {LoginData} from '../interfaces/login-data.interfaces';
 import {Firestore, collection, setDoc, doc, query, where, getDocs, getDoc} from '@angular/fire/firestore';
@@ -17,8 +17,19 @@ export class AuthService {
     private router : Router
     ) { }
 
-  login({email,password}:LoginData){
-    return signInWithEmailAndPassword(this.auth,email,password);
+      
+   async login({email,password}:LoginData){
+
+     return await this.auth.setPersistence(browserSessionPersistence).then(()=>{
+       signInWithEmailAndPassword(this.auth,email,password)
+     }).catch((e)=>{
+       console.log(e)
+     })
+  
+       
+    
+
+    
   }
 
 
@@ -54,6 +65,10 @@ export class AuthService {
   pseudo!:string;
 
   getAuth = getAuth();
+
+
+
+  
   checkLogIn(){
     if(this.auth.currentUser==null){
         this.router.navigate(['/'])

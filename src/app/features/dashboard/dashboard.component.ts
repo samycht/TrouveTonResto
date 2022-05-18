@@ -3,8 +3,10 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { RestaurantFormComponent } from './restaurant-form/restaurant-form.component';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { DataService } from 'src/app/core/services/data.service';
+import { StorageService } from 'src/app/core/services/storage.service';
 import {Firestore} from "@angular/fire/firestore";
 import {Router} from '@angular/router'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,11 +20,12 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private authService : AuthService,
     private data : DataService,
+    private storage: StorageService
     
 
   ) {
    
-    this.authService.checkLogIn()
+    // this.authService.checkLogIn()
   }
  
 ngOnInit(): void {
@@ -54,7 +57,8 @@ ngOnInit(): void {
     let restaurantsDatas =[]
 
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
-      restaurantsDatas.push(restaurantsSnap.docs[i].data())
+      restaurantsDatas.push(restaurantsSnap.docs[i])
+
     }
 
     return restaurantsDatas
@@ -62,4 +66,9 @@ ngOnInit(): void {
 
   public restaurants = this.getRestaurantsList()
  
+  async delete(id:string){
+    await  this.storage.delRestaurant(id)
+    window.location.reload()
+  }
+
 }
