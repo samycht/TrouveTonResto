@@ -4,7 +4,7 @@
 <form class="form" [formGroup]="form" *ngIf ="submit ==false" (ngSubmit)="onSubmit()">
 
     <mat-form-field class="form-control" floatLabel="auto" color="primary" id="1">
-      <mat-label>Name</mat-label>
+      <mat-label>Nom du restaurant</mat-label>
       <input matInput formControlName="name" type="text" required />
       <mat-error *ngIf="name?.hasError('required')">
         Name is required

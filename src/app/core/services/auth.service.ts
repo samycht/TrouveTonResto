@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut , setPersistence,browserSessionPersistence} from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut , setPersistence,browserSessionPersistence,onAuthStateChanged} from '@angular/fire/auth';
 import {RegisterData} from '../interfaces/register-data.interfaces';
 import {LoginData} from '../interfaces/login-data.interfaces';
 import {Firestore, collection, setDoc, doc, query, where, getDocs, getDoc} from '@angular/fire/firestore';
@@ -15,24 +15,19 @@ export class AuthService {
     private auth: Auth,
     private db: Firestore,
     private router : Router
-    ) { }
+    ) { 
+     
+    }
 
       
-   async login({email,password}:LoginData){
+  async login({email,password}:LoginData){
 
      return await this.auth.setPersistence(browserSessionPersistence).then(()=>{
        signInWithEmailAndPassword(this.auth,email,password)
      }).catch((e)=>{
        console.log(e)
-     })
-  
-       
-    
-
-    
+     })    
   }
-
-
   async register({email,password,firstName,lastName,pseudo,accountType}:RegisterData){
     return await createUserWithEmailAndPassword(this.auth,email,password).then((data)=>
 
@@ -51,9 +46,10 @@ export class AuthService {
     );
   }
   logout(){
+    
     return signOut(this.auth);
   }
-
+  
 
   uid!:string;
   accountType!:number;
@@ -63,34 +59,68 @@ export class AuthService {
   lastName!:string;
   password!:string;
   pseudo!:string;
+  
 
-  getAuth = getAuth();
+
 
 
 
   
+  
   checkLogIn(){
-    if(this.auth.currentUser==null){
+    onAuthStateChanged(getAuth(),(user)=>{
+      if(user){
+        this.uid=  user.uid
+
+      }
+      else{
         this.router.navigate(['/'])
-    }
+      }
+    })
+
   }
 
-
-  async getInfo() {
-    const docRef = doc(this.db, "users", this.uid);
-    const docSnap = await getDoc(docRef);
-
-    const user = docSnap.data();
-
-    if (user) {
-      this.accountType = user['accountType'];
-      this.email = user['email'];
-      this.firstName = user['firstName'];
-      this.lastName = user['lastName'];
-      this.password = user['password'];
-      this.pseudo = user['pseudo'];
-      this.accountTypeString = this.accountNbToString(this.accountType);
+  async getUid(){
+    onAuthStateChanged(getAuth(),(user)=>{
+      if(user){
+        this.uid = user.uid;
+       
+      }
+      else{
+        console.log("No user")
+      }
     }
+    )
+    
+    
+  }
+  
+  async getInfo() {
+   
+    const auth = getAuth();
+    onAuthStateChanged(auth,async  (user)=>{
+      if(user){
+        this.uid = user.uid;
+        const docRef = doc(this.db, "users", this.uid);
+        const docSnap = await getDoc(docRef);
+    
+        const UserData = docSnap.data()!;
+
+        this.accountType = UserData['accountType'];
+        this.email = UserData['email'];
+        this.firstName = UserData['firstName'];
+        this.lastName = UserData['lastName'];
+        this.password = UserData['password'];
+        this.pseudo = UserData['pseudo'];
+        this.accountTypeString = this.accountNbToString(this.accountType);
+
+      }
+      else{
+        console.log("User does not exist ! ");
+      }
+    })
+
+
   }
 
 

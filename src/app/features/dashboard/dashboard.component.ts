@@ -6,6 +6,8 @@ import { DataService } from 'src/app/core/services/data.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import {Firestore} from "@angular/fire/firestore";
 import {Router} from '@angular/router'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { cpuUsage } from 'process';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,20 +15,28 @@ import {Router} from '@angular/router'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  public restaurants: any;
+  uid!:string;
   constructor(
     private dial : MatDialog,
     private db : Firestore,
     private router: Router,
-    private authService : AuthService,
+    public authService : AuthService,
     private data : DataService,
-    private storage: StorageService
-    
+    private storage: StorageService,
 
   ) {
-   
-    // this.authService.checkLogIn()
+    
+
+    this.authService.checkLogIn()
+    this.fillRest();
+    
+
   }
+
+
+ 
+ 
  
 ngOnInit(): void {
 
@@ -37,6 +47,7 @@ ngOnInit(): void {
 
     dialogConfig.autoFocus = true;
     dialogConfig.width = '50%';
+    dialogConfig.height='80%';
     this.dial.open(RestaurantFormComponent, dialogConfig);
   }
 
@@ -44,31 +55,35 @@ ngOnInit(): void {
     this.dial.closeAll();
   }
 
-
-
+  public auth = getAuth();
   async getRestaurantsList() {
 
-    this.authService.getInfo()
-    this.authService.uid = this.authService.getAuth.currentUser?.uid!
-    this.authService.email = this.authService.getAuth.currentUser?.email!
+    
 
+      console.log(this.authService.uid)
 
-    let restaurantsSnap = await this.data.getRestaurants(this.authService.uid)
-    let restaurantsDatas =[]
-
-    for (let i  = 0; i<restaurantsSnap.docs.length;i++){
-      restaurantsDatas.push(restaurantsSnap.docs[i])
-
+      let restaurantsSnap = await this.data.getRestaurants(getAuth().currentUser!.uid);
+      let restaurantsDatas =[]
+  
+      for (let i  = 0; i<restaurantsSnap.docs.length;i++){
+        restaurantsDatas.push(restaurantsSnap.docs[i])
+  
+      }
+  
+      return restaurantsDatas
     }
 
-    return restaurantsDatas
-  }
-
-  public restaurants = this.getRestaurantsList()
+  
  
   async delete(id:string){
     await  this.storage.delRestaurant(id)
     window.location.reload()
   }
 
+  async fillRest(){
+    this.restaurants = await this.getRestaurantsList();
+  }
+  show(){
+    console.log(this.restaurants)
+  }
 }

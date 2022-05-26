@@ -14,11 +14,11 @@ export class DataService {
     
   }
 
-  async getRestaurants(uid:string){
+   getRestaurants(uid:string){
 
     const userRests = collection(this.db, "restaurants");
     const q = query(userRests, where("uid", "==",uid));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = getDocs(q);
     return querySnapshot
   }
 

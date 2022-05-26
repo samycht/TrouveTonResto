@@ -2,31 +2,48 @@
 
 <app-top-bar></app-top-bar>
 
-<button (click)='openDialog()'>
-  Nouveau restaurant
-</button>
+<div class="noPostContainer" *ngIf="restaurants!=undefined && restaurants.length==0">
 
-<div class="container">
-  <mat-card id ="card" *ngFor ="let res of restaurants | async">
-    <mat-card-title>
-      {{res.data()["name"]}}
-    </mat-card-title>
-    <mat-card-subtitle>
-      {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
-    </mat-card-subtitle>
-    <mat-card-content>
-      {{res.data()["description"]}}
-    </mat-card-content>
- 
-    <mat-card-actions>
-      <span>
-        {{res.data()["phone"]}}
-      </span>
-      <button (click)="delete(res.id)">
-        DELETE
-      </button>
-      
-    </mat-card-actions>
-</mat-card>
+    
+  
+    
+    <h1 id="noPost">
+      Vous n'avez aucun restaurant en ligne sur notre plateforme
+    </h1>
+
+
+  <button (click)='openDialog()' id="addPost">
+    Ajouter un restaurant
+  </button>
 </div>
+
+
+<div class="container" *ngFor ="let res of restaurants">
+
+    <mat-card id ="card" >
+      <mat-card-title>
+        {{res.data()["name"]}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
+      </mat-card-subtitle>
+      <mat-card-content>
+        {{res.data()["description"]}}
+      </mat-card-content>
+  
+      <mat-card-actions>
+        <span>
+          {{res.data()["phone"]}}
+        </span>
+        <button (click)="delete(res.id)">
+          DELETE
+        </button>
+        
+      </mat-card-actions>
+  </mat-card>
+  <button (click)='openDialog()' id="addPost">
+    Nouveau restaurant
+  </button>
+  </div>
+
 

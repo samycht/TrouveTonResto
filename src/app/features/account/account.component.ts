@@ -7,7 +7,7 @@ import { AuthService} from "../../core/services/auth.service";
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  firstname!:string;
+
 
   constructor(public auth:AuthService) {
     this.asyncgetInfo();
@@ -19,9 +19,8 @@ export class AccountComponent implements OnInit {
 
   async asyncgetInfo(){
     await this.auth.getInfo()
-    this.firstname = this.auth.firstName
-
-    console.log(this.auth.firstName)
+   
+    
   }
 
 }
