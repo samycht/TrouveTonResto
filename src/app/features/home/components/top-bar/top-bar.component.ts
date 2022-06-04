@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',

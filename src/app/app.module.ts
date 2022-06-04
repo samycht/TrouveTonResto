@@ -11,27 +11,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountComponent } from './features/account/account.component';
 import {HomeModule} from "./features/home/home.module";
 import { SearchComponent } from './features/search/search.component';
-
-
-
-
+import {FormsModule} from "@angular/forms";
+import {FilterPipe} from "./features/search/filter.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
-    SearchComponent
+    SearchComponent,
+    FilterPipe
 
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        BrowserAnimationsModule,
-        HomeModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule,
+    HomeModule,
+    FormsModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
