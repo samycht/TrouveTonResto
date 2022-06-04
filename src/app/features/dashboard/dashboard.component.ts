@@ -24,20 +24,15 @@ export class DashboardComponent implements OnInit {
     public authService : AuthService,
     private data : DataService,
     private storage: StorageService,
-
   ) {
-    
+
 
     this.authService.checkLogIn()
     this.fillRest();
-    
+
 
   }
 
-
- 
- 
- 
 ngOnInit(): void {
 
   }
@@ -58,23 +53,23 @@ ngOnInit(): void {
   public auth = getAuth();
   async getRestaurantsList() {
 
-    
+
 
       console.log(this.authService.uid)
 
       let restaurantsSnap = await this.data.getRestaurants(getAuth().currentUser!.uid);
       let restaurantsDatas =[]
-  
+
       for (let i  = 0; i<restaurantsSnap.docs.length;i++){
         restaurantsDatas.push(restaurantsSnap.docs[i])
-  
+
       }
-  
+
       return restaurantsDatas
     }
 
-  
- 
+
+
   async delete(id:string){
     await  this.storage.delRestaurant(id)
     window.location.reload()

@@ -8,7 +8,6 @@ import { AuthService} from "../../core/services/auth.service";
 })
 export class AccountComponent implements OnInit {
 
-
   constructor(public auth:AuthService) {
     this.asyncgetInfo();
   }
@@ -19,8 +18,8 @@ export class AccountComponent implements OnInit {
 
   async asyncgetInfo(){
     await this.auth.getInfo()
-   
-    
+
+    console.log(this.auth)
   }
 
 }
