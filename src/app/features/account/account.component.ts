@@ -18,8 +18,6 @@ export class AccountComponent implements OnInit {
 
   async asyncgetInfo(){
     await this.auth.getInfo()
-
     console.log(this.auth)
   }
-
 }

@@ -15,8 +15,20 @@ export class AuthService {
     private auth: Auth,
     private db: Firestore,
     private router : Router
-    ) { }
+    ) {
+      if(this.auth.currentUser){
+        this.uid = this.auth.currentUser.uid;
+      }
+  }
 
+  uid!:string;
+  accountType!:number;
+  accountTypeString!:string;
+  email!:string;
+  firstName!:string;
+  lastName!:string;
+  password!:string;
+  pseudo!:string;
 
    async login({email,password}:LoginData){
 
@@ -25,17 +37,10 @@ export class AuthService {
      }).catch((e)=>{
        console.log(e)
      })
-
-
-
-
-
   }
-
 
   async register({email,password,firstName,lastName,pseudo,accountType}:RegisterData){
     return await createUserWithEmailAndPassword(this.auth,email,password).then((data)=>
-
 
       setDoc(doc(this.db,"users",data.user.uid),{
 
@@ -54,20 +59,7 @@ export class AuthService {
     return signOut(this.auth);
   }
 
-
-  uid!:string;
-  accountType!:number;
-  accountTypeString!:string;
-  email!:string;
-  firstName!:string;
-  lastName!:string;
-  password!:string;
-  pseudo!:string;
-
   getAuth = getAuth();
-
-
-
 
   checkLogIn(){
     if(this.auth.currentUser==null){
@@ -75,8 +67,11 @@ export class AuthService {
     }
   }
 
-
   async getInfo() {
+    if(this.auth.currentUser){
+      this.uid = this.auth.currentUser.uid;
+    }
+    console.log(this.uid);
     const docRef = doc(this.db, "users", this.uid);
     const docSnap = await getDoc(docRef);
 
@@ -93,11 +88,9 @@ export class AuthService {
     }
   }
 
-
   accountNbToString(nb: number):string {
     let typeOfAccount = ["admin", "Utilisateur", "Restaurateur"];
     return typeOfAccount[nb];
   }
-
 
 }
