@@ -74,7 +74,6 @@ export class AuthService {
     console.log(this.uid);
     const docRef = doc(this.db, "users", this.uid);
     const docSnap = await getDoc(docRef);
-
     const user = docSnap.data();
 
     if (user) {

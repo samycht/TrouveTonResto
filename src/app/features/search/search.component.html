@@ -1,20 +1,19 @@
 <app-top-bar></app-top-bar>
-
-<p>search works!</p>
-
+<br>
 <div class="content" role="main">
   <div class="card">
     <div class="form-group">
-      <label for="search-text">Rechercher:</label>
-      <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+      <label for="search-text">Rechercher: </label>
+      <input type="text" (keyup)="onKey($event)" class="form-control" id="search-text" aria-describedby="search-text"
              [(ngModel)]="searchText" placeholder="Mot-clé..."
              autofocus>
     </div>
     <ul class="list-group list-group-flush">
       <!-- results of ngFor is passed to appFilter with argument searchText -->
-      <li class="list-group-item" *ngFor="let c of characters | appFilter: searchText">
-        {{c}}
+      <li class="list-group-item" *ngFor="let r of restaurantsList | appFilter: searchText">
+        {{r['name']}} - {{r['description']}} - {{r['address']}} - {{r['ville']}}
       </li>
+
     </ul>
   </div>
 </div>
