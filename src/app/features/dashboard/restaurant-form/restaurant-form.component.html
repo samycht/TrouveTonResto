@@ -58,12 +58,12 @@
         </mat-error>
       </mat-form-field>
 
-      <input id="img" type="file" accept="image/png, image/jpeg">
+      <input id="img" type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)">
 
 
 
     <div class="form-footer">
-      <button [disabled]="form.invalid" mat-raised-button type="submit">
+      <button [disabled]="form.invalid" mat-raised-button type="submit" >
         Submit
       </button>
     </div>

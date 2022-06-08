@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {Firestore,addDoc,collection,doc,deleteDoc} from '@angular/fire/firestore';
 import { RestaurantData } from '../interfaces/restaurant-data.inerfaces';
 import { AuthService } from './auth.service';
-
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { Picture } from 'src/app/features/dashboard/restaurant-form/Picture';
+import { getStorage, ref, uploadBytes} from "firebase/storage";
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +34,15 @@ export class StorageService {
     await deleteDoc(doc(this.db, "restaurants", id));
   }
 
+  uploadPicture(picture:Picture){
+    const storage = getStorage();
+    
+    const pictureRef = ref(storage,picture.name);
+    uploadBytes(pictureRef,picture.file).then((value)=>console.log(value));
+
+
+    
+  }
 
 
 

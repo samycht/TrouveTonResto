@@ -1,6 +1,7 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { StorageService } from 'src/app/core/services/storage.service';
+import { Picture } from './Picture';
 @Component({
   selector: 'app-restaurant-form',
   templateUrl: './restaurant-form.component.html',
@@ -23,6 +24,7 @@ export class RestaurantFormComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private storage: StorageService
+             
     ) { }
 
   ngOnInit(): void {
@@ -64,7 +66,7 @@ export class RestaurantFormComponent implements OnInit {
   submit:boolean=false;
 
 
-
+  
   
   onSubmit(){
     
@@ -72,5 +74,18 @@ export class RestaurantFormComponent implements OnInit {
     this.storage.addRestaurant(this.form.value);
     this.form.reset();
     this.submit=true;
+  }
+
+   onFileSelected(event:any){
+    const file:File = event.target.files[0];
+    if(file){
+    var pic:Picture  = new Picture(file);
+    pic.name=file.name
+    
+    this.storage.uploadPicture(pic);
+    }
+  
+   
+
   }
 }
