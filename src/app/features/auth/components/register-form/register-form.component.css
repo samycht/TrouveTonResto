@@ -30,3 +30,11 @@ mat-label{
 input{
   color: black;
 }
+.radioGroup{
+  display: flex;
+  flex-direction: column;
+  background-color: #c2e3ff;
+  align-items: center;
+  width: 100%;
+}
+

@@ -7,10 +7,11 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LoginPageComponent,
@@ -24,7 +25,10 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    FormsModule
+   
   ]
 })
 export class AuthModule { }

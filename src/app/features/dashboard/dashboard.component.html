@@ -17,9 +17,13 @@
   </button>
 </div>
 
+<div *ngIf="restaurants!=undefined && restaurants.length!=0"> 
+
 
 <div class="container" *ngFor ="let res of restaurants">
-
+  <button (click)='openDialog()' id="addPost">
+    Nouveau restaurant
+  </button>
     <mat-card id ="card" >
       <mat-card-title>
         {{res.data()["name"]}}
@@ -27,6 +31,8 @@
       <mat-card-subtitle>
         {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
       </mat-card-subtitle>
+
+      <img mat-card-image src = "{{res.data()['picLink']}}"> 
       <mat-card-content>
         {{res.data()["description"]}}
       </mat-card-content>
@@ -41,9 +47,9 @@
         
       </mat-card-actions>
   </mat-card>
-  <button (click)='openDialog()' id="addPost">
-    Nouveau restaurant
-  </button>
+
   </div>
 
+  
+</div>
 

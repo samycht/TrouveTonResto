@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: fit-content;
+    margin: 0 auto;
+    font-family: 'Nunito';
+    font-size: 20px;
+}
+h2{
+    font-size: 30px;
+}
+strong{
+    font-weight: bold;
+    font-size: 25px;
+}

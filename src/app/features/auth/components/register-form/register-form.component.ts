@@ -1,6 +1,7 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 
+
 @Component({
   selector: 'app-register-form',
   templateUrl: './register-form.component.html',
@@ -20,7 +21,7 @@ export class RegisterFormComponent implements OnInit {
 
   form:FormGroup;
 
-
+  answer:string;
 
   constructor(private fb:FormBuilder) { }
 
@@ -31,7 +32,7 @@ export class RegisterFormComponent implements OnInit {
         firstName:['',[Validators.required]],
         lastName:['',[Validators.required]],
         pseudo:['',[Validators.required]],
-        accountType:['',[Validators.required]],
+        accountType:['',[Validators.required]]
     });
 
   }
@@ -53,12 +54,11 @@ export class RegisterFormComponent implements OnInit {
   get pseudo(){
     return this.form.get('pseudo');
   }
-  get accountType(){
-    return this.form.get('accountType');
-  }
+
   
   onSubmit(){
     this.formData.emit(this.form.value);
+    console.log(this.answer);
   }
   
 }

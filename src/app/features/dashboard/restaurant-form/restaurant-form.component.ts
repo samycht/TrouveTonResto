@@ -21,10 +21,10 @@ export class RestaurantFormComponent implements OnInit {
   }> = new EventEmitter();
 
   form:FormGroup;
-
+  event:any;
   constructor(private fb:FormBuilder,
-              private storage: StorageService
-             
+              private storage: StorageService,
+            
     ) { }
 
   ngOnInit(): void {
@@ -71,19 +71,19 @@ export class RestaurantFormComponent implements OnInit {
   onSubmit(){
     
     this.formData.emit(this.form.value);
-    this.storage.addRestaurant(this.form.value);
+   
+   
+    this.storage.addRestaurant(this.form.value,this.event.target.files[0]);
     this.form.reset();
     this.submit=true;
+    
+    
   }
+  
 
    onFileSelected(event:any){
-    const file:File = event.target.files[0];
-    if(file){
-    var pic:Picture  = new Picture(file);
-    pic.name=file.name
+     return event;
     
-    this.storage.uploadPicture(pic);
-    }
   
    
 

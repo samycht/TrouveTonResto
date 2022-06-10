@@ -52,4 +52,8 @@ mat-card-actions{
   font-family: Nunito;
   font-weight: bold;
   font-size: 20px;
+  margin: 5% auto;
+}
+#restPic{
+  transform: scale(0.5);
 }

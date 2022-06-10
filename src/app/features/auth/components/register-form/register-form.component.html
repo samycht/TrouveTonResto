@@ -47,13 +47,18 @@
             Pseudo is required
         </mat-error>
     </mat-form-field>
-    <mat-form-field class="form-control">
-        <mat-label>Accout Type</mat-label>
-        <input matInput formControlName="accountType" type="number" required />
-        <mat-error *ngIf="accountType?.hasError('required')">
-            Account Type is required
-        </mat-error>
-    </mat-form-field>
+    <div class="radioGroup">
+        <label > Etes vous restaurateur?</label>
+        <div>
+            <label for="oui">Oui</label>
+            <input type="radio" value="2" formControlName="accountType" id="oui" [(ngModel)]="answer" >
+            <label for="non">Non</label>
+            <input type="radio" value="1" formControlName="accountType" id="non" [(ngModel)]="answer">
+      
+        </div>
+          
+    </div>
+
 
     <div class="form-footer">
         <button [disabled]="form.invalid" mat-raised-button type="submit">

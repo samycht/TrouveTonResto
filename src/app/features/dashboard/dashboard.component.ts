@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   ) {
 
 
-    this.authService.checkLogIn()
+   // this.authService.checkLogIn()
     this.fillRest();
 
 
