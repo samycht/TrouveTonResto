@@ -14,12 +14,16 @@ import { SearchComponent } from './features/search/search.component';
 import {FormsModule} from "@angular/forms";
 import {FilterPipe} from "./features/search/filter.pipe";
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     AccountComponent,
     SearchComponent,
-    FilterPipe
+    FilterPipe,
+   
+    
 
   ],
   imports: [

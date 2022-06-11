@@ -21,7 +21,11 @@ export class DataService {
     const querySnapshot = getDocs(q);
     return querySnapshot
   }
-
+  
+  getAllRestaurants(){
+    const restCollection  = collection(this.db,"restaurants");
+    return getDocs(restCollection);
+  }
   async searchRestaurant(keyword: string) {
     const restaurants = collection(this.db, "restaurants");
     const q = query(restaurants, where("name", "==", keyword));

@@ -7,7 +7,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 import {Firestore} from "@angular/fire/firestore";
 import {Router} from '@angular/router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { cpuUsage } from 'process';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -70,10 +70,7 @@ ngOnInit(): void {
 
 
 
-  async delete(id:string){
-    await  this.storage.delRestaurant(id)
-    window.location.reload()
-  }
+ 
 
   async fillRest(){
     this.restaurants = await this.getRestaurantsList();

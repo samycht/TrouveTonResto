@@ -4,51 +4,21 @@
 
 <div class="noPostContainer" *ngIf="restaurants!=undefined && restaurants.length==0">
 
-    
-  
-    
     <h1 id="noPost">
       Vous n'avez aucun restaurant en ligne sur notre plateforme
     </h1>
-
 
   <button (click)='openDialog()' id="addPost">
     Ajouter un restaurant
   </button>
 </div>
 
-<div *ngIf="restaurants!=undefined && restaurants.length!=0"> 
-
-
-<div class="container" *ngFor ="let res of restaurants">
+<div *ngIf="restaurants!=undefined && restaurants.length!=0" class="postContainer"> 
   <button (click)='openDialog()' id="addPost">
     Nouveau restaurant
   </button>
-    <mat-card id ="card" >
-      <mat-card-title>
-        {{res.data()["name"]}}
-      </mat-card-title>
-      <mat-card-subtitle>
-        {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
-      </mat-card-subtitle>
 
-      <img mat-card-image src = "{{res.data()['picLink']}}"> 
-      <mat-card-content>
-        {{res.data()["description"]}}
-      </mat-card-content>
-  
-      <mat-card-actions>
-        <span>
-          {{res.data()["phone"]}}
-        </span>
-        <button (click)="delete(res.id)">
-          DELETE
-        </button>
-        
-      </mat-card-actions>
-  </mat-card>
-
-  </div>
+  <app-restauranttemplate [restaurants]="restaurants"></app-restauranttemplate>
 
   
 </div>

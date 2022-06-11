@@ -1,7 +1,7 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 import { StorageService } from 'src/app/core/services/storage.service';
-import { Picture } from './Picture';
+
 @Component({
   selector: 'app-restaurant-form',
   templateUrl: './restaurant-form.component.html',
@@ -30,7 +30,7 @@ export class RestaurantFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name:['',[Validators.required]],
-      description:['',[Validators.required,Validators.minLength(150)]],
+      description:['',[Validators.required,Validators.minLength(100)]],
       address:['',[Validators.required]],
       city:['',[Validators.required]],
       state:['',[Validators.required]],
