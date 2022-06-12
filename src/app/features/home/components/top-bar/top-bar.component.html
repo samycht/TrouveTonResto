@@ -13,7 +13,7 @@
     <div class ="right">
 
         <a routerLink="/search" id="searchButton">Rechercher 🔍</a>
-        <a routerLink="/dashboard">Mes restaurants</a>
+        <a *ngIf="auth.isRestaurateur()" routerLink="/dashboard">Mes restaurants</a>
         <a routerLink="/account">Mon compte</a>
         <button (click)="logOut()">
             Se deconnecter

@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class TopBarComponent implements OnInit {
 
   constructor(
-    private auth:AuthService
+    public auth:AuthService
   ) { }
 
   ngOnInit(): void {

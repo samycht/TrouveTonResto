@@ -92,4 +92,12 @@ export class AuthService {
     return typeOfAccount[nb];
   }
 
+  isRestaurateur():boolean {
+    if(this.accountType == 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
