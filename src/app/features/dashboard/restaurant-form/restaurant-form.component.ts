@@ -8,7 +8,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
   styleUrls: ['./restaurant-form.component.css']
 })
 export class RestaurantFormComponent implements OnInit {
-  
+
   @Output() formData: EventEmitter<{
     name:string;
     description:string;
@@ -24,7 +24,7 @@ export class RestaurantFormComponent implements OnInit {
   event:any;
   constructor(private fb:FormBuilder,
               private storage: StorageService,
-            
+
     ) { }
 
   ngOnInit(): void {
@@ -66,26 +66,17 @@ export class RestaurantFormComponent implements OnInit {
   submit:boolean=false;
 
 
-  
-  
+
+
   onSubmit(){
-    
     this.formData.emit(this.form.value);
-   
-   
     this.storage.addRestaurant(this.form.value,this.event.target.files[0]);
     this.form.reset();
     this.submit=true;
-    
-    
   }
-  
+
 
    onFileSelected(event:any){
      return event;
-    
-  
-   
-
   }
 }
