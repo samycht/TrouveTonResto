@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {RouterModule} from '@angular/router'
 import { RestauranttemplateComponent } from '../restauranttemplate/restauranttemplate.component';
 import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     TopBarComponent

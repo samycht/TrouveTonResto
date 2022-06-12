@@ -17,8 +17,10 @@
   <button (click)='openDialog()' id="addPost">
     Nouveau restaurant
   </button>
-
-  <app-restauranttemplate [restaurants]="restaurants"></app-restauranttemplate>
+  
+  <app-restauranttemplate *ngFor = "let res of restaurants" [res]="res"></app-restauranttemplate>
+  
+  
 
   
 </div>

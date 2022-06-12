@@ -7,7 +7,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 })
 export class RestauranttemplateComponent implements OnInit {
   
-  @Input()public restaurants:any
+  @Input()public res:any
   constructor(
     private storage:StorageService
   ) { }

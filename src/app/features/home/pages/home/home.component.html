@@ -5,5 +5,9 @@
 <h1>
     Découvrez les meilleurs restaurants ! 
 </h1>
-
-<app-restauranttemplate [restaurants]="restaurants"></app-restauranttemplate>
+<div class="caroussel">
+    <div id="card" *ngFor = "let res of restaurants" >
+        <app-restauranttemplate  [res]="res"></app-restauranttemplate>
+    </div>
+  
+</div>
