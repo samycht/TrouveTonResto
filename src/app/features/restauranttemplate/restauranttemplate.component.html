@@ -9,22 +9,21 @@
     {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
   </mat-card-subtitle>
 
-  <img mat-card-image src = "{{res.data()['picLink']}}"> 
+  <img mat-card-image src = "{{res.data()['picLink']}}">
   <mat-card-content>
     {{res.data()["description"]}}
   </mat-card-content>
 
   <mat-card-actions>
     <span>
-      {{res.data()["phone"]}}
+      {{res["phone"]}}
     </span>
     <button (click)="delete(res.id)">
       DELETE
     </button>
-    
+
   </mat-card-actions>
 </mat-card>
 
 
 
-  

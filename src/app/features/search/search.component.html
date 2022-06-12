@@ -8,12 +8,12 @@
              [(ngModel)]="searchText" placeholder="Mot-clé..."
              autofocus>
     </div>
-    <ul class="list-group list-group-flush">
-      <!-- results of ngFor is passed to appFilter with argument searchText -->
-      <li class="list-group-item" *ngFor="let r of restaurantsList | appFilter: searchText">
-        {{r['name']}} - {{r['description']}} - {{r['address']}} - {{r['ville']}}
-      </li>
 
-    </ul>
+    <div class="list-group-item" *ngFor="let res of restaurantsList">
+      <app-restauranttemplate  [res]="res"></app-restauranttemplate>
+    </div>
+
+    <p *ngIf="restaurantsList.length == 0" >Aucun restaurant n'a été trouvé...</p>
+
   </div>
 </div>

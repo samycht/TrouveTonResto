@@ -21,17 +21,18 @@ export class DataService {
     const querySnapshot = getDocs(q);
     return querySnapshot
   }
-  
+
   getAllRestaurants(){
     const restCollection  = collection(this.db,"restaurants");
     return getDocs(restCollection);
   }
-  async searchRestaurant(keyword: string) {
-    const restaurants = collection(this.db, "restaurants");
-    const q = query(restaurants, where("name", "==", keyword));
-    const querySnapshot = await getDocs(q);
 
-    var results: DocumentData[] = [];
+  searchRestaurant(keyword: string) {
+    const restaurants = collection(this.db, "restaurants");
+    const q = query(restaurants, where("name", ">=", keyword), where("name", "<=", keyword+ '\uf8ff'));
+    const querySnapshot = getDocs(q);
+
+    /*var results: DocumentData[] = [];
     console.log("Searching...");
 
     querySnapshot.forEach((doc) => {
@@ -39,7 +40,7 @@ export class DataService {
       console.log(doc.id, " => ", doc.data());
       results.push(doc.data());
     });
-
-    return results
+    */
+    return querySnapshot
   }
 }
