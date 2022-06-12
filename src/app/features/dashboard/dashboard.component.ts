@@ -52,9 +52,6 @@ ngOnInit(): void {
 
   public auth = getAuth();
   async getRestaurantsList() {
-
-
-
       console.log(this.authService.uid)
 
       let restaurantsSnap = await this.data.getRestaurants(getAuth().currentUser!.uid);
@@ -62,19 +59,14 @@ ngOnInit(): void {
 
       for (let i  = 0; i<restaurantsSnap.docs.length;i++){
         restaurantsDatas.push(restaurantsSnap.docs[i])
-
       }
-
       return restaurantsDatas
     }
-
-
-
- 
 
   async fillRest(){
     this.restaurants = await this.getRestaurantsList();
   }
+
   show(){
     console.log(this.restaurants)
   }

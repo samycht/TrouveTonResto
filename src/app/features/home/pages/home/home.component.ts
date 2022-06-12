@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   public restaurants:any
   constructor(
     private data:DataService
-  ) { 
+  ) {
     this.fillRest();
     console.log(this.restaurants);
   }
@@ -19,27 +19,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   async getRestaurantsList() {
-
-
-
-
     let restaurantsSnap = await this.data.getAllRestaurants();
     let restaurantsDatas =[]
 
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
       restaurantsDatas.push(restaurantsSnap.docs[i])
-
     }
-
     return restaurantsDatas
   }
-
-
-
-
 
   async fillRest(){
     this.restaurants = await this.getRestaurantsList();
