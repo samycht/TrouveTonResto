@@ -99,3 +99,7 @@ strong{
     color: #091540;
     border-color: #091540;
 }
+
+a {
+  margin: 5px;
+}
