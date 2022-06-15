@@ -8,6 +8,7 @@ import { StorageService } from 'src/app/core/services/storage.service';
 export class RestauranttemplateComponent implements OnInit {
   
   @Input()public res:any
+  @Input()public del:boolean
   constructor(
     private storage:StorageService
   ) { }

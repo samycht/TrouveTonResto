@@ -11,8 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card'
-
-
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -31,7 +30,9 @@ import {MatCardModule} from '@angular/material/card'
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
+
 
   ],
 
