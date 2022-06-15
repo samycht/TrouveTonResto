@@ -2,10 +2,10 @@
 
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1>
-        Register
+        Créer un compte
     </h1>
     <mat-form-field class="form-control">
-        <mat-label>Email</mat-label>
+        <mat-label>E-mail</mat-label>
         <input matInput formControlName="email" type="text" required />
         <mat-error *ngIf="email?.hasError('required')">
             Email is required
@@ -15,7 +15,7 @@
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
-        <mat-label>Password</mat-label>
+        <mat-label>Mot de passe</mat-label>
         <input matInput formControlName="password" type="password" required />
         <mat-error *ngIf="password?.hasError('required')">
             Password is required
@@ -27,14 +27,14 @@
 
 
     <mat-form-field class="form-control">
-        <mat-label>First Name</mat-label>
+        <mat-label>Prénom</mat-label>
         <input matInput formControlName="firstName" type="text" required />
         <mat-error *ngIf="firstName?.hasError('required')">
             First Name is required
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
-        <mat-label>Last Name</mat-label>
+        <mat-label>Nom</mat-label>
         <input matInput formControlName="lastName" type="text" required />
         <mat-error *ngIf="lastName?.hasError('required')">
             Last Name is required
@@ -54,9 +54,9 @@
             <input type="radio" value="2" formControlName="accountType" id="oui" [(ngModel)]="answer" >
             <label for="non">Non</label>
             <input type="radio" value="1" formControlName="accountType" id="non" [(ngModel)]="answer">
-      
+
         </div>
-          
+
     </div>
 
 
