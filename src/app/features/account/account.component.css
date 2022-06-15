@@ -4,8 +4,12 @@
     width: 30%;
     height: fit-content;
     margin: 0 auto;
+    margin-top: 20px;
     font-family: 'Nunito';
     font-size: 20px;
+    border-radius: 30px;
+    border: solid #091540;
+    padding: 10px;
 }
 h2{
     font-size: 30px;
