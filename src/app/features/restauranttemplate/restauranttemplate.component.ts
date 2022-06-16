@@ -9,6 +9,7 @@ export class RestauranttemplateComponent implements OnInit {
   
   @Input()public res:any
   @Input()public del:boolean
+  @Input()public home:boolean
   constructor(
     private storage:StorageService
   ) { }

@@ -54,7 +54,7 @@ ngOnInit(): void {
   async getRestaurantsList() {
       console.log(this.authService.uid)
 
-      let restaurantsSnap = await this.data.getRestaurants(getAuth().currentUser!.uid);
+      let restaurantsSnap = await this.data.getUserRestaurants(getAuth().currentUser!.uid);
       let restaurantsDatas =[]
 
       for (let i  = 0; i<restaurantsSnap.docs.length;i++){

@@ -14,10 +14,18 @@ export class DataService {
 
   }
 
-  getRestaurants(uid: string) {
+  getUserRestaurants(uid: string) {
 
     const userRests = collection(this.db, "restaurants");
     const q = query(userRests, where("uid", "==", uid));
+    const querySnapshot = getDocs(q);
+    return querySnapshot
+  }
+
+  getSingleRestaurant(name: string) {
+
+    const Rests = collection(this.db, "restaurants");
+    const q = query(Rests, where("name", "==", name));
     const querySnapshot = getDocs(q);
     return querySnapshot
   }

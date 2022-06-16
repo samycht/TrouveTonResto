@@ -13,13 +13,14 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
         <div class="templ">
-            <app-restauranttemplate  [res]="restaurants[0]"></app-restauranttemplate>
+            <app-restauranttemplate  [res]="restaurants[0]" [home]="true"></app-restauranttemplate>
         </div>
         </div>
-        <div class="carousel-item" *ngFor="let res of restaurants">
+        <div class="carousel-item" *ngFor="let res of restaurants; index as indexOfElement">
             
-            <div class="templ">
-                <app-restauranttemplate  [res]="res"></app-restauranttemplate>
+            <div class="templ" *ngIf="indexOfElement!=0">
+                <app-restauranttemplate  [res]="res" [home]="true" ></app-restauranttemplate>
+              
             </div>
             
         </div>

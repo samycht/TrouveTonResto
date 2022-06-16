@@ -1,7 +1,7 @@
 
 
 
-<mat-card id ="card">
+<mat-card id ="card" *ngIf="home==false">
   <mat-card-title>
     {{res.data()["name"]}}
   </mat-card-title>
@@ -26,6 +26,21 @@
     Supprimer
   </button>
 </mat-card>
+
+
+<div id="container" *ngIf="home==true">
+  <h1>
+    {{res.data()['name']}}
+  </h1>
+  <span >
+    <a [routerLink]="['/rest',res.data()['name']]">Voir le restaurant</a> 
+  </span>
+  <img id="homePic" src="{{res.data()['picLink']}} " >
+   
+    
+  
+
+</div>
 
 
 

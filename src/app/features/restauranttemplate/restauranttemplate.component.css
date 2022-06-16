@@ -43,3 +43,40 @@
   padding: 10px;
   align-self: center;
 }
+
+
+
+
+#container{
+  width: 800px;
+  aspect-ratio: 1;
+}
+
+#homePic{
+  width: 100%;
+  height: 100%; 
+  object-fit: contain;
+}
+#container span{
+  visibility: hidden;
+  width: 800px;
+  height: 0px;
+  background-color: black;
+  
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+  text-decoration: underline;
+}
+#container a{
+  color: white;
+
+}
+#container:hover span{
+  visibility: visible;
+  height: 800px;
+}

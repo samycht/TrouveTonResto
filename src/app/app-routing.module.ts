@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './features/home/pages/home/home.component';
 import { AccountComponent} from "./features/account/account.component";
 import { SearchComponent} from "./features/search/search.component";
+import { RestlandingpageComponent } from './features/restlandingpage/restlandingpage.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path:'rest/:name',
+    component:RestlandingpageComponent
   },
   {
     path: '**',
