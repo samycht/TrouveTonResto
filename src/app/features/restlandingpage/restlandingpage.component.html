@@ -1,14 +1,17 @@
-<p>restlandingpage works!</p>
 
-<h1>
-  {{restaurants.docs[0].data()['name']}}
-</h1>
+<body>
+  <h1>
+    {{restaurants.docs[0].data()['name']}}
+  </h1>
+  
+  <h4>
+      {{restaurants.docs[0].data()["address"] + ", "  +  restaurants.docs[0].data()["city"]  + ", "+  restaurants.docs[0].data()["zip"]  + ", " + restaurants.docs[0].data()["state"]}} 
+  </h4>
+  <img src="{{restaurants.docs[0].data()['picLink']}}" >
+  
+  <span>
+      {{restaurants.docs[0].data()["description"]}}
+  </span>
 
-<h4>
-    {{restaurants.docs[0].data()["address"] + ", "  +  restaurants.docs[0].data()["city"]  + ", "+  restaurants.docs[0].data()["zip"]  + ", " + restaurants.docs[0].data()["state"]}} 
-</h4>
-<img src="{{restaurants.docs[0].data()['picLink']}}" >
+</body>
 
-<span>
-    {{restaurants.docs[0].data()["description"]}}
-</span>

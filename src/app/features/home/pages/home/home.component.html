@@ -1,14 +1,10 @@
 <app-top-bar></app-top-bar>
 
 
-
-<h3>
-    Découvrez les meilleurs restaurants ! 
-</h3>
-
-
-
-
+<body>
+<h1>
+    Découvrez les meilleurs restaurants
+</h1>
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -16,10 +12,10 @@
             <app-restauranttemplate  [res]="restaurants[0]" [home]="true"></app-restauranttemplate>
         </div>
         </div>
-        <div class="carousel-item" *ngFor="let res of restaurants; index as indexOfElement">
+        <div class="carousel-item"  >
             
-            <div class="templ" *ngIf="indexOfElement!=0">
-                <app-restauranttemplate  [res]="res" [home]="true" ></app-restauranttemplate>
+            <div class="templ" *ngFor="let res of restaurants; index as indexOfElement">
+                <app-restauranttemplate  *ngIf="indexOfElement!=0" [res]="res" [home]="true" ></app-restauranttemplate>
               
             </div>
             
@@ -35,3 +31,8 @@
     <span id="arr" class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
     </button>
+</body>
+
+
+
+

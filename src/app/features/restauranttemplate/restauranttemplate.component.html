@@ -28,14 +28,20 @@
 </mat-card>
 
 
-<div id="container" *ngIf="home==true">
-  <h1>
+<div class="container" *ngIf="home==true">
+  <h1 id="restName">
     {{res.data()['name']}}
   </h1>
-  <span >
-    <a [routerLink]="['/rest',res.data()['name']]">Voir le restaurant</a> 
-  </span>
-  <img id="homePic" src="{{res.data()['picLink']}} " >
+  <div class="imgContainer">
+    <img id="homePic" src="{{res.data()['picLink']}} " >
+    <div class="middle">
+      <div class="text"><a [routerLink]="['/rest',res.data()['name']]">Voir le restaurant</a> </div>
+    </div>
+    
+  </div>
+ 
+  
+
    
     
   

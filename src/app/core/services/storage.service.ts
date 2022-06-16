@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Firestore,addDoc,collection,doc,deleteDoc,updateDoc,query,where,getDocs} from '@angular/fire/firestore';
-import { RestaurantData } from '../interfaces/restaurant-data.inerfaces';
+import { RestaurantData } from '../class/Restaurant';
 import { AuthService } from './auth.service';
 import { Picture } from 'src/app/features/dashboard/restaurant-form/Picture';
 import { getStorage, ref, uploadBytes,getDownloadURL} from "firebase/storage";
@@ -15,7 +15,7 @@ export class StorageService {
     private authService: AuthService
   ) { }
 
-  async addRestaurant({name,description,address,city,state,zip,phone}:RestaurantData,file:File){
+  async addRestaurant(restaurant:RestaurantData,file:File){
     var pic:Picture  = new Picture(file);
   
     pic.name=file.name
@@ -29,13 +29,13 @@ export class StorageService {
     pic.url = dlUrl;
     await addDoc(collection(this.db,"restaurants"),{
       uid: this.authService.uid,
-      name:name,
-      description:description,
-      address:address,
-      city:city,
-      state:state,
-      zip:zip,
-      phone:phone,
+      name:restaurant.name,
+      description:restaurant.description,
+      address:restaurant.address,
+      city:restaurant.city,
+      state:restaurant.state,
+      zip:restaurant.zip,
+      phone:restaurant.phone,
       picLink:pic.url
     }
     

@@ -1,6 +1,8 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
-
+import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
+import { RegisteredUser } from 'src/app/core/class/RegisteredUser';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -8,14 +10,12 @@ import {FormBuilder,FormGroup,Validators} from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
 
-  @Output() formData: EventEmitter<{
-    email:string;
-    password:string;
-  }> = new EventEmitter();
-
+  
   form:FormGroup;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,
+    private authService:AuthService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -34,6 +34,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.formData.emit(this.form.value);
+    let registeredUser=new RegisteredUser(this.form.value["email"],this.form.value["password"])
+    this.authService.login(registeredUser).then(()=>this.router.navigate(['/dashboard'])).catch((e)=>console.log(e.message));
   }
 }

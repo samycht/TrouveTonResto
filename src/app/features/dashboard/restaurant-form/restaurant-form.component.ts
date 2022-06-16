@@ -1,5 +1,6 @@
 import { Component, OnInit, Output,EventEmitter} from '@angular/core';
 import {FormBuilder,FormGroup,Validators} from '@angular/forms';
+import { Restaurant } from 'src/app/core/class/Restaurant';
 import { StorageService } from 'src/app/core/services/storage.service';
 
 @Component({
@@ -9,16 +10,6 @@ import { StorageService } from 'src/app/core/services/storage.service';
 })
 export class RestaurantFormComponent implements OnInit {
 
-  @Output() formData: EventEmitter<{
-    name:string;
-    description:string;
-    address:string;
-    city:string;
-    state:string;
-    zip:string;
-    phone:string;
-
-  }> = new EventEmitter();
 
   form:FormGroup;
   event:any;
@@ -69,8 +60,9 @@ export class RestaurantFormComponent implements OnInit {
 
 
   onSubmit(){
-    this.formData.emit(this.form.value);
-    this.storage.addRestaurant(this.form.value,this.event.target.files[0]);
+
+    let restaurant = new Restaurant(this.form.value["name"],this.form.value["description"],this.form.value["address"],this.form.value["city"],this.form.value["state"],this.form.value["zip"],this.form.value["phone"])
+    this.storage.addRestaurant(restaurant,this.event.target.files[0]);
     this.form.reset();
     this.submit=true;
   }

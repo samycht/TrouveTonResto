@@ -12,7 +12,7 @@
   <p>Résultat de la recherche: {{restaurantsList.length}} 🍽 </p>
 
   <div id="list-group-item" *ngFor="let res of restaurantsList">
-    <app-restauranttemplate  [res]="res"></app-restauranttemplate>
+    <app-restauranttemplate  [res]="res" [home]="false" [del]="false"></app-restauranttemplate>
   </div>
 
   <p *ngIf="restaurantsList.length == 0" >Aucun restaurant n'a été trouvé...</p>

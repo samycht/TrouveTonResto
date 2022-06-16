@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import {LoginData} from 'src/app/core/interfaces/login-data.interfaces';
+import {RegisteredUser} from 'src/app/core/class/RegisteredUser';
 import {Router} from '@angular/router';
 
 @Component({
@@ -19,8 +19,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(data: LoginData):void {
-    this.authService.login(data).then(()=>this.router.navigate(['/dashboard'])).catch((e)=>console.log(e.message));
+  login(user: RegisteredUser):void {
+  
   
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword,signOut , setPersistence,browserSessionPersistence} from '@angular/fire/auth';
-import {RegisterData} from '../interfaces/register-data.interfaces';
-import {LoginData} from '../interfaces/login-data.interfaces';
+import {NewUser} from '../class/NewUser';
+import { RegisteredUser} from '../class/RegisteredUser';
 import {Firestore, collection, setDoc, doc, query, where, getDocs, getDoc} from '@angular/fire/firestore';
 import {getAuth } from "@angular/fire/auth";
 import {Router} from '@angular/router'
@@ -30,26 +30,26 @@ export class AuthService {
   password!:string;
   pseudo!:string;
 
-   async login({email,password}:LoginData){
+   async login(registeredUser:RegisteredUser){
 
      return await this.auth.setPersistence(browserSessionPersistence).then(()=>{
-       signInWithEmailAndPassword(this.auth,email,password)
+       signInWithEmailAndPassword(this.auth,registeredUser.email,registeredUser.password)
      }).catch((e)=>{
        console.log(e)
      })
   }
 
-  async register({email,password,firstName,lastName,pseudo,accountType}:RegisterData){
-    return await createUserWithEmailAndPassword(this.auth,email,password).then((data)=>
+  async register(newUser:NewUser){
+    return await createUserWithEmailAndPassword(this.auth,newUser.email,newUser.password).then((data)=>
 
       setDoc(doc(this.db,"users",data.user.uid),{
 
-        email:email,
-        password:password,
-        firstName:firstName,
-        lastName:lastName,
-        pseudo:pseudo,
-        accountType:accountType
+        email:newUser.email,
+        password:newUser.password,
+        firstName:newUser.firstName,
+        lastName:newUser.lastName,
+        pseudo:newUser.pseudo,
+        accountType:newUser.accountType
       }).catch(error => {
         console.log('Something went wrong with added user to firestore: ', error);
     })
