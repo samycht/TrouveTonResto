@@ -35,7 +35,8 @@ import {FilterPipe} from "./features/search/filter.pipe";
     BrowserAnimationsModule,
     HomeModule,
     FormsModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

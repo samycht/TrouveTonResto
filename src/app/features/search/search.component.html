@@ -7,9 +7,10 @@
     <input type="text" (keyup)="onKey($event)" class="form-control" id="search-text" aria-describedby="search-text"
            [(ngModel)]="searchText" placeholder="Mot-clé..."
            autofocus>
+    <p>Résultat de la recherche: {{restaurantsList.length}} 🍽 </p>
   </div>
 
-  <p>Résultat de la recherche: {{restaurantsList.length}} 🍽 </p>
+  
 
   <div id="list-group-item" *ngFor="let res of restaurantsList">
     <app-restauranttemplate  [res]="res" [home]="false" [del]="false"></app-restauranttemplate>

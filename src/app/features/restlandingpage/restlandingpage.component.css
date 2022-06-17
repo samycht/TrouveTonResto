@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
-body{
+
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,24 +9,39 @@ body{
     width: 100%;
     height: 100%;
 }
-h1{
-    font-weight: 700;
-    background-color: #091540;
-    color: white;
-    padding: 20px;
-    border-radius: 15px;
+
+.info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-h4{
-    color: grey;
+
+h1 {
+    font-size: 35px;
+    font-weight: 700;
+    padding: 15px;
+    margin-bottom: 5%;
+    background-color: #FFAAA7;
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    width: fit-content;
+}
+
+h4 {
+    color: white;
     font-style: italic;
 }
 
-img{
+img {
     border-radius: 15px;
     transform: scale(0.8);
-    
+
 }
-span{
+
+span {
     width: 85%;
     height: fit-content;
     overflow-wrap: break-word;
