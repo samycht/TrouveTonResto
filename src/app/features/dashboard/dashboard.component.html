@@ -8,13 +8,13 @@
       Vous n'avez aucun restaurant en ligne sur notre plateforme
     </h1>
 
-  <button (click)='openDialog()' id="addPost">
+  <button  class="addPost" (click)='openDialog()' id="noPostButton">
     Ajouter un restaurant
   </button>
 </div>
 
 <div *ngIf="restaurants!=undefined && restaurants.length!=0" class="postContainer"> 
-  <button (click)='openDialog()' id="addPost">
+  <button (click)='openDialog()' class="addPost">
     Nouveau restaurant
   </button>
 

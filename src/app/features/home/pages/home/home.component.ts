@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
   constructor(
     private data:DataService
   ) {
-    this.fillRest();
-    console.log(this.restaurants);
-    console.log(getAuth().currentUser)
+    
+    
   }
 
   ngOnInit(): void {
+    this.fillRest();
   }
 
   async getRestaurantsList() {
