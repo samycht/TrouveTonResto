@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-
+import { UserData } from 'src/app/core/class/Account';
+import { User } from 'firebase/auth';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -9,12 +10,20 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 
 export class TopBarComponent implements OnInit {
+  public user:User
+  public userData:UserData
+  constructor(public auth:AuthService,
+          
+    ) {
 
-  constructor(
-    public auth:AuthService
-  ) { }
+        
+  }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.user =await this.auth.getUser()
+    this.userData = await this.auth.getInfo(this.user.uid)
+   
+
   }
   logOut(){
     this.auth.logout()

@@ -12,12 +12,14 @@
 
     <div class ="right">
 
-        <a routerLink="/search" id="searchButton">Rechercher 🔍</a>
-        <a *ngIf="auth.isRestaurateur()" routerLink="/dashboard">Mes restaurants</a>
-        <a routerLink="/account">Mon compte</a>
-        <button (click)="logOut()">
+        <a  routerLink="/search" id="searchButton">Rechercher 🔍</a>
+        <a *ngIf="this.user!=null && this.userData.accountType==2" routerLink="/dashboard">Mes restaurants</a>
+        <a *ngIf="this.user!=null" routerLink="/account">Mon compte</a>
+        <button *ngIf="this.user!=null" (click)="logOut()">
             Se deconnecter
         </button>
+        <a *ngIf="this.user==null" routerLink="/">Se connecter</a>
+        
 
     </div>
 

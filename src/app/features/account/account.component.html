@@ -4,11 +4,11 @@
   <h2>Mon compte</h2>
 
 <ul>
-  <li><strong>Pseudo: </strong> {{this.auth.pseudo}}</li>
-  <li><strong>Prénom: </strong> {{this.auth.firstName}}</li>
-  <li><strong>Nom: </strong>{{this.auth.lastName}}</li>
-  <li><strong>E-mail: </strong>{{this.auth.email}}</li>
-  <li><strong>Type de compte: </strong>  {{this.auth.accountTypeString}} </li>
+  <li><strong>Pseudo: </strong> {{this.userData.pseudo}}</li>
+  <li><strong>Prénom: </strong> {{this.userData.firstName}}</li>
+  <li><strong>Nom: </strong>{{this.userData.lastName}}</li>
+  <li><strong>E-mail: </strong>{{this.userData.email}}</li>
+  <li><strong>Type de compte: </strong>  {{this.userData.accountTypeString()}} </li>
 </ul>
 
 </div>

@@ -1,4 +1,4 @@
-export class Account {
+export class UserData {
   constructor (
     public uid:string,
     public accountType:number,

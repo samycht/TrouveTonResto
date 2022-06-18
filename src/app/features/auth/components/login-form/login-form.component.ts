@@ -35,6 +35,6 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(){
     let registeredUser=new RegisteredUser(this.form.value["email"],this.form.value["password"])
-    this.authService.login(registeredUser).then(()=>this.router.navigate(['/dashboard'])).catch((e)=>console.log(e.message));
+    this.authService.login(registeredUser).then(()=>this.router.navigate(['/home'])).catch((e)=>console.log(e.message));
   }
 }

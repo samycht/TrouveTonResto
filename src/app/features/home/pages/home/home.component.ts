@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HomeModule } from '../../home.module';
 import { DataService } from 'src/app/core/services/data.service';
 import { Data } from '@angular/router';
+import { getAuth } from 'firebase/auth';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.fillRest();
     console.log(this.restaurants);
+    console.log(getAuth().currentUser)
   }
 
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
   async getRestaurantsList() {
     let restaurantsSnap = await this.data.getAllRestaurants();
     let restaurantsDatas =[]
-
+   
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
       restaurantsDatas.push(restaurantsSnap.docs[i])
     }
