@@ -20,16 +20,22 @@ export class SearchComponent implements OnInit {
   public userid: string = '';
   private userData: UserData;
 
+  public userconnected:boolean;
+
   constructor(private data: DataService,
               public auth : AuthService,) {
+    this.fillRest();
   }
 
   async ngOnInit(): Promise<void> {
-    this.user =await this.auth.getUser()
-    this.userData = await this.auth.getInfo(this.user.uid)
-    this.userid = this.user.uid
     this.fillRest();
-    console.log(this.restaurantsList);
+
+    this.user = await this.auth.getUser()
+    if(this.user){
+      this.userconnected = true
+      this.userid = this.user.uid
+      console.log("userid:",this.userid)
+    }
   }
 
   async onKey(event: any) {
@@ -50,8 +56,6 @@ export class SearchComponent implements OnInit {
 
   async fillRest(){
     this.restaurantsList  = await this.getRestaurantsList();
-    this.user = await this.auth.getUser()
-    this.userid = this.user.uid
-    console.log("userid:",this.userid)
+    console.log(this.restaurantsList);
   }
 }

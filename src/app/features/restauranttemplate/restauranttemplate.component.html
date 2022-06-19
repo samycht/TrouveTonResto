@@ -4,7 +4,6 @@
 <mat-card id ="card" *ngIf="home==false">
   <mat-card-title>
     {{res.data()["name"]}}
-    {{res.data()["name"]}}
     <button *ngIf ="userIdHere==true" (click)="like()" id="likeBut">
       <img src="{{likeUrl}}">
     </button>
@@ -31,7 +30,10 @@
 
 
 <div class="container" *ngIf="home==true">
-  <h1 id="restName">
+  <h1 class="restName" *ngIf="isMostLikedRestaurant">
+    Restaurant le plus liké
+  </h1>
+  <h1 class="restName">
     {{res.data()['name']}}
   </h1>
   <div class="imgContainer">
@@ -41,12 +43,6 @@
     </div>
 
   </div>
-
-
-
-
-
-
 
 </div>
 

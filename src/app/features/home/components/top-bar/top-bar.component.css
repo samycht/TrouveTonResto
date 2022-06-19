@@ -9,7 +9,6 @@
     background-color: #B5FE83;
 
     z-index: 1;
-
 }
 
 strong {
@@ -42,9 +41,6 @@ strong {
 #logo {
     display: flex;
     flex-direction: column;
-
-
-
 }
 
 #logo a {
@@ -71,8 +67,6 @@ strong {
     display: flex;
     width: 45%;
     justify-content: space-evenly;
-
-
 }
 
 .right a {
@@ -81,11 +75,7 @@ strong {
     letter-spacing: 2px;
     font-family: 'Nunito';
     text-decoration: none;
-
-
-
-
-
+    padding-right: 30px;
 }
 
 .right button {
@@ -95,14 +85,10 @@ strong {
     background: none;
     border: none;
     letter-spacing: 2px;
-
-
 }
 
 .right a:hover {
-
     border-bottom: 1px solid black;
-
 }
 
 .right button:hover {

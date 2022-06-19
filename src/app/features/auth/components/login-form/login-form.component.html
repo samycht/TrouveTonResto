@@ -1,22 +1,22 @@
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-control" floatLabel="auto" color="primary">
-      <mat-label>Email</mat-label>
+      <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" type="text" required />
       <mat-error *ngIf="email?.hasError('required')">
-        Email is required
+        L'e-mail est requis.
       </mat-error>
       <mat-error *ngIf="email?.hasError('email')">
-        Email isn't valid. Please enter a valid email.
+        L'e-mail n'est pas valide, veuillez entrer un e-mail valide.
       </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
-      <mat-label>Password</mat-label>
+      <mat-label>Mot de passe</mat-label>
       <input matInput formControlName="password" type="password" required />
       <mat-error *ngIf="password?.hasError('required')">
-        Password is required
+        Le mot de passe est requis.
       </mat-error>
       <mat-error *ngIf="password?.hasError('minLength')">
-        Password must contain at least 6 characters.
+        Le mot de passe doit contenir au moins 6 caractères.
       </mat-error>
     </mat-form-field>
     <div class="form-footer">

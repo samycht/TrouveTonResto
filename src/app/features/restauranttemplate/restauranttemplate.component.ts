@@ -19,6 +19,7 @@ export class RestauranttemplateComponent implements OnInit {
   @Input()public userIdHere:boolean
   @Input()public home:boolean
   @Input()public favPage:boolean
+  @Input()public isMostLikedRestaurant:boolean
 
   public liked:boolean
   public likedString: string = "J'aime";
@@ -37,7 +38,7 @@ export class RestauranttemplateComponent implements OnInit {
         console.log("userid undefined")
       }
       this.checkLike();
-      console.log("constructor: ",this.userId," ",this.res.uid)
+      console.log("constructor: ",this.userId," ",this.res.id)
     }
   }
 

@@ -1,7 +1,8 @@
 <app-top-bar></app-top-bar>
 
-
 <body>
+
+
 <h1>
     Découvrez les meilleurs restaurants
 </h1>
@@ -9,28 +10,25 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-        <div class="templ">
-            <app-restauranttemplate  [res]="restaurants[0]" [home]="true"></app-restauranttemplate>
-        </div>
+          <div class="templ">
+              <app-restauranttemplate [isMostLikedRestaurant]="true" [res]="theMostLikedResto" [home]="true"></app-restauranttemplate>
+          </div>
         </div>
         <div class="carousel-item"  >
-            
-            <div class="templ" *ngFor="let res of restaurants; index as indexOfElement">
-                <app-restauranttemplate  *ngIf="indexOfElement!=0" [res]="res" [home]="true" ></app-restauranttemplate>
-              
-            </div>
-            
+          <div class="templ" *ngFor="let res of restaurants; index as indexOfElement">
+              <app-restauranttemplate  *ngIf="indexOfElement!=indextheMostLikedResto" [res]="res" [home]="true" ></app-restauranttemplate>
+          </div>
         </div>
     </div>
 
     </div>
     <button id ="skipBtnLeft" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span id="arr" class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+      <span id="arr" class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
     </button>
     <button id ="skipBtnRight" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span id="arr" class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+      <span id="arr" class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
     </button>
 </body>
 

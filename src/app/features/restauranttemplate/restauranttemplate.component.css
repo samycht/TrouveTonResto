@@ -27,13 +27,11 @@
     justify-content: space-between;
   }
 
-
 #restPic{
   border-radius: 10px;
     transform: scale(0.5);
 
 }
-
 
 #delBut{
   width: fit-content;
@@ -110,7 +108,7 @@
   text-decoration: underline;
 }
 
-#restName{
+.restName{
   font-size: 35px;
   font-weight: 400;
 

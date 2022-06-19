@@ -8,20 +8,20 @@
         <mat-label>E-mail</mat-label>
         <input matInput formControlName="email" type="text" required />
         <mat-error *ngIf="email?.hasError('required')">
-            Email is required
+            L'e-mail est requis.
         </mat-error>
         <mat-error *ngIf="email?.hasError('email')">
-            Email isn't valid. Please enter a valid email.
+            L'e-mail n'est pas valide, veuillez entrer un e-mail valide.
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
         <mat-label>Mot de passe</mat-label>
         <input matInput formControlName="password" type="password" required />
         <mat-error *ngIf="password?.hasError('required')">
-            Password is required
+           Le mot de passe est requis.
         </mat-error>
         <mat-error *ngIf="password?.hasError('minLength')">
-            Password must contain at least 6 characters.
+            Le mot de passe doit contenir au moins 6 caractères.
         </mat-error>
     </mat-form-field>
 
@@ -30,25 +30,25 @@
         <mat-label>Prénom</mat-label>
         <input matInput formControlName="firstName" type="text" required />
         <mat-error *ngIf="firstName?.hasError('required')">
-            First Name is required
+            Le prénom est requis.
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
         <mat-label>Nom</mat-label>
         <input matInput formControlName="lastName" type="text" required />
         <mat-error *ngIf="lastName?.hasError('required')">
-            Last Name is required
+          Le nom est requis.
         </mat-error>
     </mat-form-field>
     <mat-form-field class="form-control">
         <mat-label>Pseudo</mat-label>
         <input matInput formControlName="pseudo" type="text" required />
         <mat-error *ngIf="pseudo?.hasError('required')">
-            Pseudo is required
+          Le pseudo est requis.
         </mat-error>
     </mat-form-field>
     <div class="radioGroup">
-        <label > Etes vous restaurateur?</label>
+        <label > Êtes-vous restaurateur?</label>
         <div>
             <label for="oui">Oui</label>
             <input type="radio" value="2" formControlName="accountType" id="oui" [(ngModel)]="answer" >

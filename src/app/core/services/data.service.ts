@@ -90,4 +90,47 @@ export class DataService {
     console.log("get...",docSnap)
     return docSnap
   }
+
+  async getTheMostLikedResto() {
+    const restaurants = collection(this.db, "favorites");
+    const q = query(restaurants);
+
+    var restos:[number:string]
+
+
+    let favorites = new Map<string, number>();
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      var resto_id = doc.data()["restaurant_id"];
+
+      if(favorites.has(resto_id)){
+        var nb = favorites.get(resto_id)!
+        favorites.set(resto_id, nb+1);
+      } else {
+        favorites.set(resto_id, 1);
+      }
+    });
+
+
+    var recordOflike = 0
+    var bestRestoID = ""
+
+    for (let [key, value] of favorites) {
+      if(value>recordOflike){
+        bestRestoID=key
+        recordOflike = value
+        console.log("Resto le plus liké:",key," like:",value);
+      }
+
+    }
+    if(bestRestoID){
+      var resto = await this.getSingleRestaurantById(bestRestoID)
+      return resto
+    }
+    else return undefined
+
+  }
 }

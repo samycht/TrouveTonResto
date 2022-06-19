@@ -10,28 +10,48 @@ import { getAuth } from 'firebase/auth';
 })
 export class HomeComponent implements OnInit {
   public restaurants:any
+  public theMostLikedResto:any
+  public indextheMostLikedResto:number
+
   constructor(
     private data:DataService
   ) {
-    
-    
+
+
   }
 
   ngOnInit(): void {
-    this.fillRest();
+    this.getTHERest();
   }
 
   async getRestaurantsList() {
     let restaurantsSnap = await this.data.getAllRestaurants();
-    let restaurantsDatas =[]
-   
+    let restaurantsDatas = []
+
+
     for (let i  = 0; i<restaurantsSnap.docs.length;i++){
-      restaurantsDatas.push(restaurantsSnap.docs[i])
+      if(restaurantsSnap.docs[i].id == this.theMostLikedResto.id){
+        console.log("if  ", restaurantsSnap.docs[i].id, this.theMostLikedResto.id)
+        this.indextheMostLikedResto = i;
+      } else {
+        console.log("else ", restaurantsSnap.docs[i].id, this.theMostLikedResto.id)
+      }
+        restaurantsDatas.push(restaurantsSnap.docs[i])
     }
+    console.log("restaurantsDatas.length,",restaurantsDatas.length)
     return restaurantsDatas
   }
 
   async fillRest(){
     this.restaurants = await this.getRestaurantsList();
+  }
+
+  async getTHERest() {
+    this.theMostLikedResto =  await this.data.getTheMostLikedResto();
+
+    console.log("gettheresto: ",this.theMostLikedResto.data()['uid']);
+
+    this.fillRest();
+    return this.theMostLikedResto
   }
 }
