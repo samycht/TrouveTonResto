@@ -1,0 +1,31 @@
+#search-text{
+  border-radius: 15px;
+  padding: 5px;
+  background-color: white ;
+  color: #091540;
+  font-family: 'Nunito';
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border: 1px solid #FFAAA7;
+  background: white;
+
+}
+
+.content{
+
+  padding: 10px;
+}
+#search-text::placeholder{
+  color: black;
+}
+
+#list-group-item{
+  display: inline-block;
+  padding: 50px;
+}
+.form-search{
+  margin: 0 auto;
+  width: 30%;
+}

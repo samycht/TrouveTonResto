@@ -19,6 +19,7 @@ export class RestauranttemplateComponent implements OnInit {
 
   public liked:boolean
   public likedString: string = "J'aime";
+  public likeUrl: string = "assets/notlike.png";
 
   constructor(
     private storage:StorageService,
@@ -68,8 +69,11 @@ export class RestauranttemplateComponent implements OnInit {
   likeString(){
     if(this.liked){
       this.likedString= "J'aime"
-    }else{
+      this.likeUrl = "assets/like.png"
+    }
+    else{
       this.likedString ="J'aime pas"
+      this.likeUrl = "assets/notlike.png"
     }
   }
 

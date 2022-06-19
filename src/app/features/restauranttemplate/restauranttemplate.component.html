@@ -5,6 +5,9 @@
   <mat-card-title>
     {{res.data()["name"]}}
     {{res.data()["name"]}}
+    <button *ngIf ="userIdHere==true" (click)="like()" id="likeBut">
+      <img src="{{likeUrl}}">
+    </button>
   </mat-card-title>
   <mat-card-subtitle>
     {{res.data()["address"] + ", "  +  res.data()["city"] + ", "+  res.data()["zip"] + ", " + res.data()["state"]}}
@@ -20,9 +23,7 @@
       {{res.data()["phone"]}}
     </span>
   </mat-card-actions>
-  <button *ngIf ="userId != ''" (click)="like()" id="likeBut">
-    {{likedString}}
-  </button>
+
   <button *ngIf ="del==true" (click)="delete(res.id)" id="delBut">
     Supprimer
   </button>

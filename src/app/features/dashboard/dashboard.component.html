@@ -13,15 +13,15 @@
   </button>
 </div>
 
-<div *ngIf="restaurants!=undefined && restaurants.length!=0" class="postContainer"> 
+<div *ngIf="restaurants!=undefined && restaurants.length!=0" class="postContainer">
   <button (click)='openDialog()' class="addPost">
     Nouveau restaurant
   </button>
 
-  <app-restauranttemplate *ngFor = "let res of restaurants" [res]="res" [home]="false" [del]="true"></app-restauranttemplate>
-  
-  
+  <app-restauranttemplate *ngFor = "let res of restaurants" [userIdHere]="false" [res]="res" [home]="false" [del]="true"></app-restauranttemplate>
 
-  
+
+
+
 </div>
 

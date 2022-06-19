@@ -11,16 +11,12 @@
     </div>
 
     <div class ="right">
-
         <a  routerLink="/search" id="searchButton">Rechercher </a>
         <a *ngIf="this.user!=null && this.userData.accountType==2" routerLink="/dashboard">Mes restaurants</a>
         <a *ngIf="this.user!=null && this.userData.accountType==1"  routerLink="/favorite">Mes favoris</a>
         <a *ngIf="this.user!=null" routerLink="/account">Mon compte</a>
         <a  *ngIf="this.user!=null" role="button" (click)="logOut()">Se deconnecter</a>
-
         <a *ngIf="this.user==null" routerLink="/">Se connecter</a>
-
-
     </div>
 
 </div>
