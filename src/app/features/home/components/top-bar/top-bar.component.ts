@@ -13,16 +13,16 @@ export class TopBarComponent implements OnInit {
   public user:User
   public userData:UserData
   constructor(public auth:AuthService,
-          
-    ) {
 
-        
+    ) {
+    console.log(this.user)
+
   }
 
   async ngOnInit(): Promise<void> {
-    this.user =await this.auth.getUser()
+    this.user = await this.auth.getUser()
     this.userData = await this.auth.getInfo(this.user.uid)
-   
+
 
   }
   logOut(){

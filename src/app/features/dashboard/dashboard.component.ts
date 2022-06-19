@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   public restaurants: any;
   public userData:UserData;
   public user:User
-  
+
   constructor(
     private dial : MatDialog,
     private db : Firestore,
@@ -27,13 +27,7 @@ export class DashboardComponent implements OnInit {
     public auth : AuthService,
     private data : DataService,
     private storage: StorageService,
-
   ) {
-
-   
-    
- 
-
   }
 
   async ngOnInit(): Promise<void> {
@@ -52,16 +46,9 @@ export class DashboardComponent implements OnInit {
     this.dial.open(RestaurantFormComponent, dialogConfig);
   }
 
-
-
   closeDialog(){
     this.dial.closeAll();
   }
-
-
-
-
-
 
   async getRestaurantsList() {
 
@@ -75,12 +62,8 @@ export class DashboardComponent implements OnInit {
       return restaurantsDatas
     }
 
-
-
   async fillRest(){
     this.restaurants = await this.getRestaurantsList();
   }
 
-  
- 
 }

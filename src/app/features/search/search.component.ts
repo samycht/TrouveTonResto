@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../core/services/data.service";
 import {QuerySnapshot} from "@angular/fire/compat/firestore";
 import {DocumentData} from "@angular/fire/firestore";
+import {AuthService} from "../../core/services/auth.service";
+import {User} from "firebase/auth";
 
 @Component({
   selector: 'app-search',
@@ -13,8 +15,11 @@ export class SearchComponent implements OnInit {
   title = 'angular-text-search-highlight';
   searchText = '';
   public restaurantsList: any = [];
+  public user: User;
+  public userid: string = '';
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService,
+              public auth : AuthService,) {
     this.fillRest();
     console.log(this.restaurantsList);
   }
@@ -40,5 +45,8 @@ export class SearchComponent implements OnInit {
 
   async fillRest(){
     this.restaurantsList  = await this.getRestaurantsList();
+    this.user = await this.auth.getUser()
+    this.userid = this.user.uid
+    console.log("userid:",this.userid)
   }
 }

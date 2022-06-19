@@ -1,23 +1,80 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import { StorageService } from 'src/app/core/services/storage.service';
+import {Favorite} from "../../core/class/Favorite";
+import {user} from "@angular/fire/auth";
+import {AuthService} from "../../core/services/auth.service";
+import {DataService} from "../../core/services/data.service";
 @Component({
   selector: 'app-restauranttemplate',
   templateUrl: './restauranttemplate.component.html',
   styleUrls: ['./restauranttemplate.component.css']
 })
 export class RestauranttemplateComponent implements OnInit {
-  
+
   @Input()public res:any
   @Input()public del:boolean
+  @Input()public userId:string
+  @Input()public userIdHere:boolean
   @Input()public home:boolean
+
+  public liked:boolean
+  public likedString: string = "J'aime";
+
   constructor(
-    private storage:StorageService
-  ) { }
+    private storage:StorageService,
+    private data:DataService
+  ) {
+    if(this.userIdHere){
+      while(this.userId.length==0){
+        console.log("userid undefined")
+      }
+      this.checkLike();
+      console.log("constructor: ",this.userId," ",this.res.uid)
+    }
+  }
 
   ngOnInit(): void {
+
   }
+
   async delete(id:string){
-    await  this.storage.delRestaurant(id)
+    await this.storage.delRestaurant(id)
     window.location.reload()
   }
+
+  async like(){
+    let favorite = new Favorite(this.userId, this.res.id)
+    console.log("like()",this.userId, this.res.id,this.liked);
+    if(this.liked){
+      await this.storage.removeFavorite(favorite)
+      //this.liked = false
+    } else {
+      await this.storage.addFavorite(favorite)
+      //this.liked = true
+    }
+    this.checkLike();
+    this.likeString()
+  }
+
+  async checkLike() {
+    let favorite = new Favorite(this.userId,this.res.id)
+    this.liked = await this.data.isAlreadyFavorite(favorite)
+
+    console.log("checkLike()",this.liked);
+
+    this.likeString();
+  }
+
+  likeString(){
+    if(this.liked){
+      this.likedString= "J'aime"
+    }else{
+      this.likedString ="J'aime pas"
+    }
+  }
+
+  /*@HostListener('document:mousemove', ['$event'])
+  onMouseMove() {
+    this.checkLike();
+  }*/
 }

@@ -13,6 +13,7 @@ import {HomeModule} from "./features/home/home.module";
 import { SearchComponent } from './features/search/search.component';
 import {FormsModule} from "@angular/forms";
 import {FilterPipe} from "./features/search/filter.pipe";
+import { FavoriteComponent } from './features/favorite/favorite.component';
 
 
 
@@ -22,8 +23,9 @@ import {FilterPipe} from "./features/search/filter.pipe";
     AccountComponent,
     SearchComponent,
     FilterPipe,
-   
-    
+    FavoriteComponent,
+
+
 
   ],
   imports: [
@@ -36,7 +38,7 @@ import {FilterPipe} from "./features/search/filter.pipe";
     HomeModule,
     FormsModule,
     FormsModule,
-   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

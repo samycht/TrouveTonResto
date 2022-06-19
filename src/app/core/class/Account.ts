@@ -21,4 +21,8 @@ export class UserData {
     let typeOfAccount = ["admin", "Utilisateur", "Restaurateur"];
     return typeOfAccount[this.accountType];
   }
+
+  isRestaurateur():boolean {
+    return (this.accountType == 2);
+  }
 }

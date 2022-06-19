@@ -1,0 +1,11 @@
+<app-top-bar></app-top-bar>
+<br>
+<div class="content" role="main">
+
+  <div id="list-group-item" *ngFor="let res of restaurantsList">
+    <app-restauranttemplate  [userIdHere]="true" [userId]="userid" [res]="res" [home]="false" [del]="false"></app-restauranttemplate>
+  </div>
+
+  <p *ngIf="restaurantsList.length == 0" >Aucun restaurant n'a été trouvé...</p>
+
+</div>

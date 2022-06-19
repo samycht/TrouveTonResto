@@ -18,10 +18,10 @@
     <span>
       {{res.data()["phone"]}}
     </span>
-  
-
-  
   </mat-card-actions>
+  <button *ngIf ="userId != ''" (click)="like()" id="likeBut">
+    {{likedString}}
+  </button>
   <button *ngIf ="del==true" (click)="delete(res.id)" id="delBut">
     Supprimer
   </button>
@@ -37,14 +37,14 @@
     <div class="middle">
       <div class="text"><a [routerLink]="['/rest',res.data()['name']]">Voir le restaurant</a> </div>
     </div>
-    
-  </div>
- 
-  
 
-   
-    
-  
+  </div>
+
+
+
+
+
+
 
 </div>
 

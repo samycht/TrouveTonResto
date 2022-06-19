@@ -4,6 +4,7 @@ import { HomeComponent } from './features/home/pages/home/home.component';
 import { AccountComponent} from "./features/account/account.component";
 import { SearchComponent} from "./features/search/search.component";
 import { RestlandingpageComponent } from './features/restlandingpage/restlandingpage.component';
+import {FavoriteComponent} from "./features/favorite/favorite.component";
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
   {
   path: 'dashboard',
    loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule),
-   
+
 
   },
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path:'rest/:name',
     component:RestlandingpageComponent
+  },
+  {
+    path:'favorite',
+    component: FavoriteComponent
   },
   {
     path: '**',
