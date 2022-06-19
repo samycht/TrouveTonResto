@@ -56,6 +56,4 @@ export class FavoriteComponent implements OnInit {
   async fillRest(){
     this.restaurantsList = await this.getRestaurantsList();
   }
-
-
 }

@@ -4,6 +4,7 @@ import {Favorite} from "../../core/class/Favorite";
 import {user} from "@angular/fire/auth";
 import {AuthService} from "../../core/services/auth.service";
 import {DataService} from "../../core/services/data.service";
+import {User} from "firebase/auth";
 @Component({
   selector: 'app-restauranttemplate',
   templateUrl: './restauranttemplate.component.html',
@@ -14,8 +15,10 @@ export class RestauranttemplateComponent implements OnInit {
   @Input()public res:any
   @Input()public del:boolean
   @Input()public userId:string
+  @Input()public user:User
   @Input()public userIdHere:boolean
   @Input()public home:boolean
+  @Input()public favPage:boolean
 
   public liked:boolean
   public likedString: string = "J'aime";
@@ -54,7 +57,10 @@ export class RestauranttemplateComponent implements OnInit {
       //this.liked = true
     }
     this.checkLike();
-    this.likeString()
+    this.likeString();
+    if(this.favPage){
+      window.location.reload();
+    }
   }
 
   async checkLike() {
