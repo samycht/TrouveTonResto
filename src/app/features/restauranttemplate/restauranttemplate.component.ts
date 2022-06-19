@@ -19,12 +19,16 @@ export class RestauranttemplateComponent implements OnInit {
 
   public liked:boolean
   public likedString: string = "J'aime";
-  public likeUrl: string = "assets/notlike.png";
+  public likeUrl: string;
 
   constructor(
     private storage:StorageService,
     private data:DataService
   ) {
+
+  }
+
+  async ngOnInit(): Promise<void> {
     if(this.userIdHere){
       while(this.userId.length==0){
         console.log("userid undefined")
@@ -32,10 +36,6 @@ export class RestauranttemplateComponent implements OnInit {
       this.checkLike();
       console.log("constructor: ",this.userId," ",this.res.uid)
     }
-  }
-
-  ngOnInit(): void {
-
   }
 
   async delete(id:string){
@@ -69,11 +69,11 @@ export class RestauranttemplateComponent implements OnInit {
   likeString(){
     if(this.liked){
       this.likedString= "J'aime"
-      this.likeUrl = "assets/like.png"
+      this.likeUrl = "assets/liked.png"
     }
     else{
       this.likedString ="J'aime pas"
-      this.likeUrl = "assets/notlike.png"
+      this.likeUrl = "assets/notliked.png"
     }
   }
 
