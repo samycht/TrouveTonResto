@@ -85,7 +85,7 @@ export class DataService {
   }
 
   getSingleRestaurantById(id: string) {
-    const docRef = doc(this.db, "users", "restaurants");
+    const docRef = doc(this.db, "restaurants", id);
     const docSnap = getDoc(docRef);
     console.log("get...",docSnap)
     return docSnap

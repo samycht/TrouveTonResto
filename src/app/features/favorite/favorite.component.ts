@@ -40,12 +40,12 @@ export class FavoriteComponent implements OnInit {
       console.log(" favoritesDatas.push(favoritesSnap.docs[i])", favoritesSnap.docs[i].data())
     }
 
-    console.log("favoritesDatas",favoritesDatas.length)
+    console.log("favoritesDatas",favoritesDatas[0].data())
 
 
     for (let i  = 0; i<favoritesDatas.length;i++){
       var resto = await this.data.getSingleRestaurantById(favoritesDatas[i].data()["restaurant_id"])
-      restoDatas.push(resto.data())
+      restoDatas.push(resto)
       console.log("favoritesDatas[i].data()[\"restaurant_id\"]",favoritesDatas[i].data()["restaurant_id"],"  resto",resto.data())
     }
     console.log("restoDatas",restoDatas.length)
