@@ -17,20 +17,10 @@ export class AuthService {
     private db: Firestore,
     private router : Router
     ) {
-      if(this.auth.currentUser){
-        this.uid = this.auth.currentUser.uid;
-      }
+     
   }
 
-  uid!:string;
-  accountType!:number;
-  accountTypeString!:string;
-  email!:string;
-  firstName!:string;
-  lastName!:string;
-  password!:string;
-  pseudo!:string;
-
+ 
   async login(registeredUser:RegisteredUser) {
    
   
@@ -126,12 +116,5 @@ export class AuthService {
     return typeOfAccount[nb];
   }
 
-  isRestaurateur():boolean {
-    if(this.accountType == 2) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
+  
 }

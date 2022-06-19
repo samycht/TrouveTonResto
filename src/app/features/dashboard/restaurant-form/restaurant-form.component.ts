@@ -65,6 +65,7 @@ export class RestaurantFormComponent implements OnInit {
     this.storage.addRestaurant(restaurant,this.event.target.files[0]);
     this.form.reset();
     this.submit=true;
+    
   }
 
 
