@@ -49,14 +49,16 @@
     </mat-form-field>
     <div class="radioGroup">
         <label > Êtes-vous restaurateur?</label>
-        <div>
+        <div id="radioLabel">
+          <div>
             <label for="oui">Oui</label>
             <input type="radio" value="2" formControlName="accountType" id="oui" [(ngModel)]="answer" >
-            <label for="non">Non</label>
-            <input type="radio" value="1" formControlName="accountType" id="non" [(ngModel)]="answer">
-
+          </div>
+          <div>
+              <label for="non">Non</label>
+              <input type="radio" value="1" formControlName="accountType" id="non" [(ngModel)]="answer">
+            </div>
         </div>
-
     </div>
 
 

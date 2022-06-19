@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 a{
-  color:#5eccd6 ;
+  color: #76b64f;
 }
 
 h1 {
@@ -17,6 +17,7 @@ button {
   border-radius: 20px;
   padding: 0 50px;
 }
+
 
 p {
   margin-bottom: 20px;
@@ -41,12 +42,12 @@ p {
 }
 
 .right {
- 
+
   background-color: #5eccd6;
   width: 50%;
   height: 100%;
- 
- 
+
+
 }
 .center{
   display: flex;
@@ -55,18 +56,18 @@ p {
   position: absolute;
   top: 12%;
   left: 12%;
-  
+
   color: #FFE61B;
   font-weight: 700;
   font-family: Nunito;
 
 }
 .right img{
-  
+
     width: 100%;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
-    
+
 }
 .form-container {
   align-items: center;
