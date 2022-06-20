@@ -6,7 +6,7 @@ import { DataService } from 'src/app/core/services/data.service';
 import { StorageService } from 'src/app/core/services/storage.service';
 import {Firestore} from "@angular/fire/firestore";
 import {Router} from '@angular/router';
-import { UserData } from 'src/app/core/class/Account';
+import { UserData } from 'src/app/core/class/UserData';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth';
 

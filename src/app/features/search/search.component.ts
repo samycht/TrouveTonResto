@@ -4,7 +4,7 @@ import {QuerySnapshot} from "@angular/fire/compat/firestore";
 import {DocumentData} from "@angular/fire/firestore";
 import {AuthService} from "../../core/services/auth.service";
 import {User} from "firebase/auth";
-import {UserData} from "../../core/class/Account";
+import {UserData} from "../../core/class/UserData";
 
 @Component({
   selector: 'app-search',

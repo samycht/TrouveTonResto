@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {DataService} from "../../core/services/data.service";
 import {AuthService} from "../../core/services/auth.service";
 import {User} from "firebase/auth";
-import {UserData} from "../../core/class/Account";
+import {UserData} from "../../core/class/UserData";
 
 @Component({
   selector: 'app-favorite',

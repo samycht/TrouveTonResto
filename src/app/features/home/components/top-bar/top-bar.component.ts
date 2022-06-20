@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { UserData } from 'src/app/core/class/Account';
+import { UserData } from 'src/app/core/class/UserData';
 import { User } from 'firebase/auth';
 @Component({
   selector: 'app-top-bar',

@@ -10,8 +10,6 @@
     <p>Résultat de la recherche: {{restaurantsList.length}} 🍽 </p>
   </div>
 
-
-
   <div id="list-group-item" *ngFor="let res of restaurantsList">
     <app-restauranttemplate  [userIdHere]="userconnected" [userId]="userid" [res]="res" [home]="false" [del]="false"></app-restauranttemplate>
   </div>

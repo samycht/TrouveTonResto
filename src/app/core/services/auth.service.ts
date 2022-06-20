@@ -5,7 +5,7 @@ import { RegisteredUser} from '../class/RegisteredUser';
 import {Firestore, collection, setDoc, doc, query, where, getDocs, getDoc} from '@angular/fire/firestore';
 import {getAuth } from "@angular/fire/auth";
 import {Router} from '@angular/router'
-import { UserData } from '../class/Account';
+import { UserData } from '../class/UserData';
 import { User } from 'firebase/auth';
 @Injectable({
   providedIn: 'root'
@@ -17,19 +17,11 @@ export class AuthService {
     private db: Firestore,
     private router : Router
     ) {
-     
   }
 
- 
   async login(registeredUser:RegisteredUser) {
-   
-  
     setPersistence(getAuth(),browserLocalPersistence).then(()=>  signInWithEmailAndPassword(this.auth,registeredUser.email,registeredUser.password))
     console.log((await signInWithEmailAndPassword(this.auth,registeredUser.email,registeredUser.password)).user)
-   
-  
-   
-
   }
 
   async register(newUser:NewUser){
@@ -52,37 +44,15 @@ export class AuthService {
     return signOut(this.auth).then(()=>location.reload());
   }
 
-
   getUser() {
     return new Promise<User>((resolve,reject)=>{
       onAuthStateChanged(getAuth(),(user)=>{
         if(user){
           resolve(user)
         }
-        
       })
     })
-    
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  getAuth = getAuth();
 
   checkLogIn(){
     if(this.auth.currentUser==null){
@@ -91,7 +61,7 @@ export class AuthService {
   }
 
   async getInfo(userID:string) {
- 
+
     var userData = new UserData(userID,0,"","","","","");
 
     const docRef = doc(this.db, "users", userID);
@@ -105,16 +75,8 @@ export class AuthService {
       userData.lastName = userDoc['lastName'];
       userData.password = userDoc['password'];
       userData.pseudo = userDoc['pseudo'];
-      
     }
-   
     return userData
   }
 
-  accountNbToString(nb: number):string {
-    let typeOfAccount = ["admin", "Utilisateur", "Restaurateur"];
-    return typeOfAccount[nb];
-  }
-
-  
 }
