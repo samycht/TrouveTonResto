@@ -14,8 +14,8 @@
               <app-restauranttemplate [isMostLikedRestaurant]="true" [res]="theMostLikedResto" [home]="true"></app-restauranttemplate>
           </div>
         </div>
-        <div class="carousel-item"  >
-          <div class="templ" *ngFor="let res of restaurants; index as indexOfElement">
+        <div class="carousel-item" *ngFor="let res of restaurants; index as indexOfElement" >
+          <div class="templ" >
               <app-restauranttemplate  *ngIf="indexOfElement!=indextheMostLikedResto" [res]="res" [home]="true" ></app-restauranttemplate>
           </div>
         </div>
