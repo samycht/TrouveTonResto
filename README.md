@@ -1,10 +1,6 @@
 # TrouveTonResto
 
-Voici le projet de l'UV WE4B. Nous avons choisi de réaliser un site vitrine de restaurant.
-
-## Groupe
-  BESSAH Eddy
-  CHOUIT Samy
+Voici le projet universitaire. Nous avons choisi de réaliser un site vitrine de restaurant.
 
 ## Fonctionnalités
 
